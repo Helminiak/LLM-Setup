@@ -1,0 +1,11 @@
+dataset_id: "example_not_a_real_dataset"
+storage_location: "EXTERNAL"
+format: "specify"
+source: "document permitted source and license"
+date_range: "YYYY-MM-DD/YYYY-MM-DD"
+sha256: ""
+size_bytes: null
+generated_by: "repository@full-commit-sha and command"
+schema_version: ""
+model_identity: ""
+notes: "Template only; no credentials or private storage paths."

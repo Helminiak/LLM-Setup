@@ -1,0 +1,31 @@
+repository: "Helminiak/LLM-Setup"
+visibility: "public"
+purpose: "Reproducible local-LLM provisioning, launch configuration, interoperability, RAG/STT setup and benchmark operation."
+authoritative_branch: "main"
+source_of_truth:
+  - git
+  - github_issues
+  - github_pull_requests
+protected_branch:
+  - "main"
+branch_protection_enforced: false
+workflow:
+  direct_main_commits: false
+  issue_required_for_substantive_change: true
+  independent_review_recommended: true
+  one_editing_owner_per_branch: true
+security:
+  secrets_allowed: false
+  customer_data_allowed: false
+  personal_data_allowed: false
+  proprietary_strategy_allowed: false
+large_files:
+  review_above_mib: 25
+  ordinary_git_max_mib: 100
+  raw_datasets_allowed: false
+  model_weights_allowed: false
+agent_entrypoints:
+  - README.md
+  - AGENTS.md
+  - docs/MULTI_LLM_WORKFLOW.md
+license: "not selected by this bootstrap; preserve existing declarations"
