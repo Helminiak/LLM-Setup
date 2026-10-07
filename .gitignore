@@ -1,0 +1,27 @@
+
+# Multi-LLM source-control hygiene (additive; existing exclusions retained)
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+node_modules/
+build/
+dist/
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+*.swp
+model-weights/
+models/cache/
+*.gguf
+*.safetensors
+
+model-cache/
+huggingface-cache/
+.cuda-cache/

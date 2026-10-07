@@ -89,3 +89,9 @@ Every benchmark should record enough configuration to reproduce it, including wh
 - relevant hardware state
 
 The goal is to distinguish actual performance changes from configuration drift.
+
+## Agent entrypoints and license
+
+Before making changes, read [AGENTS.md](AGENTS.md), [the multi-LLM workflow](docs/MULTI_LLM_WORKFLOW.md) and the assigned issue. Use an owned task branch, record the full source commit and validate the actual repository state before handoff.
+
+License: not yet selected by this governance bootstrap. Preserve existing copyright and any existing license or UNLICENSED declarations; public visibility is not an open-source license.
