@@ -1,0 +1,87 @@
+{
+  "schema_version": 2,
+  "program": "DR100",
+  "board_slug": "dr100-engineering-control",
+  "board_name": "DR100 — AI Engineering Control",
+  "approved_mode": "admin_import_triage_and_blocked_only",
+  "purpose": "Administrative-only DR100 history import. Triage parks unassigned reference cards because parentless Todo cards auto-promote to Ready. Blocked preserves reviewer HOLD. No workers or code authorized.",
+  "items": [
+    {
+      "key": "dr100:issue:2",
+      "title": "WP001 — G2 delegation proof (historical limited acceptance)",
+      "priority": 1,
+      "status": "triage",
+      "reason": "",
+      "body": "Source: https://github.com/Helminiak/dr100-engineering-control/issues/2\nStatus: Historical limited acceptance of a bounded G2 smoke test. This is a migration reference card, NOT a new Kanban run and NOT production qualification.\nEvidence: Follow the WP001 issue and DR100 evidence branch. Earlier iterations failed; reviewer subsequently accepted limited continuation only. Verify current native Kanban worker-routing separately.\nNext action: Read-only reconciliation of task/tool event evidence and profile settings. No new worker authorization from this card."
+    },
+    {
+      "key": "dr100:issue:3",
+      "title": "WP002 — Evidence integrity / review HOLD",
+      "priority": 0,
+      "status": "blocked",
+      "reason": "Independent CHATGPT_REVIEW_V1: CHANGES_REQUESTED/HOLD; two local attempts exhausted. No automatic correction, escalation, merge, deploy, or release.",
+      "body": "Source: https://github.com/Helminiak/dr100-engineering-control/issues/3\nDraft PR: https://github.com/Helminiak/dr100-engineering-control/pull/4\nPinned WIP source SHA: aa397ab1d94ed2d87c3a91838563eccf8e6b9902\nObserved test results from WP003: 22 total; 17 pass, 3 fail, 2 errors.\nAuthority: independent review CHANGES_REQUESTED / HOLD. Two local correction attempts exhausted.\nDo NOT reset counters, dispatch Qwen or Codex, merge or claim G2/G6 release acceptance. Await owner/reviewer direction and verified evidence. Historical GitHub reviews are not fabricated Kanban runs."
+    },
+    {
+      "key": "dr100:issue:5",
+      "title": "WP003 — Native Kanban board migration and reconciliation",
+      "priority": 1,
+      "status": "triage",
+      "reason": "",
+      "body": "Source: https://github.com/Helminiak/dr100-engineering-control/issues/5\nBoard: dr100-engineering-control (existing, owner-created)\nStatus: Administrative migration, not an active worker task.\nReconcile WP001/WP002 and G2B/G4/G5/G6 from GitHub; verify board slug, SQLite backup, independent worker profiles, Pushover capability and crosswalk.\nNo Ready+assigned cards, automatic dispatch, Gateway restart, source modification, or false historical run records. Leave Orderflow board untouched.\nAcceptance: idempotent card creation, exact source URLs, accurate statuses, private GitHub readback."
+    },
+    {
+      "key": "dr100:ops:routing",
+      "title": "Supervisor / LM Studio / context routing verification",
+      "priority": 1,
+      "status": "triage",
+      "reason": "",
+      "body": "Authority: https://github.com/Helminiak/dr100-engineering-control/issues/5\nPrevious LM Studio Qwen3.8 Coder390 Q6_K at 80,000 context passed model/API inference smoke. Hermes cloud supervisor openai-codex/gpt-6.1-sol and separate native Kanban worker profiles require independent tool-routing verification.\nEarlier direct delegate_task route and profile endpoint/configuration were inconsistent. Preserve validated model and OAuth credentials. No unapproved credential or global configuration writes.\nNo execution authorized: verify profile configurations and isolated Kanban readiness first."
+    },
+    {
+      "key": "dr100:ops:pushover",
+      "title": "Pushover alerts — routing and receipt verification",
+      "priority": 1,
+      "status": "triage",
+      "reason": "",
+      "body": "Authority: https://github.com/Helminiak/dr100-engineering-control/issues/5\nPushover plugin module loaded, but API delivery and owner phone receipt remain UNVERIFIED.\nInspect plugin enablement and secret PRESENCE only. Arrange ONE owner-authorized test; record API response separately from confirmed phone receipt.\nNo credentials, message tokens, private endpoints, or raw logs in card/GitHub."
+    },
+    {
+      "key": "dr100:gate:g2b",
+      "title": "G2B — Requirements handoff integrity",
+      "priority": 1,
+      "status": "triage",
+      "reason": "",
+      "body": "Authority: https://github.com/Helminiak/dr100-engineering-control/issues/5\nPLANNED; not yet approved for coding or dispatch.\nProve the bounded worker receives source-linked requirements, acceptance checks and current SHA without hidden changes. A previous plain delegation trace is NOT native Kanban run history.\nOwner must approve actual execution separately."
+    },
+    {
+      "key": "dr100:gate:g4",
+      "title": "G4 — Bounded local retry / cloud escalation",
+      "priority": 0,
+      "status": "blocked",
+      "reason": "G4 implementation NOT AUTHORIZED. Two-attempt and reviewer-authority policy must be approved/tested first.",
+      "body": "Authority: https://github.com/Helminiak/dr100-engineering-control/issues/5\nPLANNED and NOT IMPLEMENTED for DR100. No automatic cloud escalation or unbounded retry. Preserve incident identity, evidence, attempt counters and explicit authorization. Orderflow ESC-POLICY-001 is not proof of DR100 enforcement."
+    },
+    {
+      "key": "dr100:gate:g5",
+      "title": "G5 — Independent author/reviewer enforcement",
+      "priority": 1,
+      "status": "blocked",
+      "reason": "Design only; independent reviewer provenance and authority not accepted for automatic enforcement.",
+      "body": "Authority: https://github.com/Helminiak/dr100-engineering-control/issues/5\nPLANNED, NOT IMPLEMENTED. Verify author/reviewer independence, distinct sessions, exact commit-SHA binding and authentic review provenance. No automatic acceptance, PR approval, or merge."
+    },
+    {
+      "key": "dr100:gate:g6",
+      "title": "G6 — Release / deployment gate",
+      "priority": 0,
+      "status": "blocked",
+      "reason": "Release remains HOLD: no unattended merge, deployment, gate acceptance or release authority.",
+      "body": "Authority: https://github.com/Helminiak/dr100-engineering-control/issues/5\nBLOCKED. Work package gate criteria, test fidelity, CI verification, protected GitHub authority and explicit human release approval remain unqualified. No claim of successful DR100 release."
+    }
+  ],
+  "notes": [
+    "Five entries are intentionally parked in triage. Do not invoke specify/decompose; Manual orchestration remains enabled.",
+    "Four entries have immutable blocked reasons from WP003. No Ready/assigned tasks.",
+    "Existing WP001 idempotency key dr100:issue:2 keeps its task ID after the owner moves the single Ready card into Triage."
+  ]
+}
