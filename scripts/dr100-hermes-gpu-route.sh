@@ -100,8 +100,10 @@ try:
         data["rollback_file_local_only"]=str(backup)
         changed=True
         # Explicitly remove direct endpoint overrides, which take precedence over provider.
-        config_unset("delegation.base_url")
-        config_unset("delegation.api_key")
+        if config_get("delegation.base_url") is not None:
+            config_unset("delegation.base_url")
+        if config_get("delegation.api_key") is not None:
+            config_unset("delegation.api_key")
         config_set("delegation.provider","lmstudio")
         config_set("delegation.model",MODEL)
         config_set("delegation.max_concurrent_children","1")
