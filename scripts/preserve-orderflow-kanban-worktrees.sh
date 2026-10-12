@@ -55,8 +55,11 @@ for name in ("repo","native-proposal"):
            "archives":{}}
     for kind in ("tracked.patch","untracked.tar.gz","git.bundle"):
         p=out/(name+"."+kind)
-        entry["archives"][kind]={"sha256":hashlib.sha256(p.read_bytes()).hexdigest(),
-                                  "bytes":p.stat().st_size}
+        h=hashlib.sha256()
+    with p.open("rb") as source:
+        for block in iter(lambda: source.read(1024*1024), b""):
+            h.update(block)
+    entry["archives"][kind]={"sha256":h.hexdigest(),"bytes":p.stat().st_size}
     data["components"][name]=entry
 raw=(json.dumps(data,indent=2,sort_keys=True)+"\n").encode()
 p=out/"manifest.json";p.write_bytes(raw);p.chmod(0o600)
