@@ -72,7 +72,9 @@ def back_up(out):
 def main():
     os.umask(0o077)
     parser=argparse.ArgumentParser()
-    parser.add_argument("--apply",action="store_true",help="Backup then import nine unassigned cards")
+    group=parser.add_mutually_exclusive_group()
+    group.add_argument("--plan",action="store_true",help="Read-only migration plan (default)")
+    group.add_argument("--apply",action="store_true",help="Backup then import nine unassigned cards")
     args=parser.parse_args()
     if not DB.is_file() or DB.is_symlink(): raise RuntimeError("DR100 board slug/DB missing")
     if SLUG not in run("kanban","boards","list"): raise RuntimeError("Hermes does not list target board")
