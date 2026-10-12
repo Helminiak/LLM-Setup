@@ -84,7 +84,8 @@ PY
 
 echo "LOCAL PRESERVATION: $OUT"
 echo "FILES: manifest, verified board SQLite backup, SHA256SUMS, patches, untracked archives, Git bundles"
-echo "No branches, commits, repository files, or Kanban cards were modified."\necho "Scope: two previously identified dirty worktrees; other workspaces are NOT claimed preserved."
+echo "No branches, commits, repository files, or Kanban cards were modified."
+echo "Scope: two previously identified dirty worktrees; other workspaces are NOT claimed preserved."
 
 if command -v gh >/dev/null 2>&1 &&
    [[ "$(gh api repos/Helminiak/knowledge-base --jq '.private' 2>/dev/null || true)" == "true" ]]; then
