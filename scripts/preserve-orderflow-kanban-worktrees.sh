@@ -45,11 +45,25 @@ for NAME in repo native-proposal; do
   echo "  HEAD $(cat "$OUT/$NAME.HEAD") branch=$(cat "$OUT/$NAME.branch")"
 done
 
+# The currently Running task may have its own isolated workspace. Capture it
+# separately if present; it is NOT covered by the two previously identified repos.
+TASK_WORKSPACE="$HOME/.hermes/kanban/boards/orderflow-engineering/workspaces/t_10ea1bd5"
+if [[ -d "$TASK_WORKSPACE" ]]; then
+  tar --directory="$(dirname "$TASK_WORKSPACE")" --create --gzip \
+      --file="$OUT/current-task-workspace.tar.gz" "$(basename "$TASK_WORKSPACE")"
+  echo "Captured current task workspace directory (local archive only)"
+else
+  echo "Current task has no separate t_10ea1bd5 workspace directory; two known dirty repos still preserved"
+fi
+
 (
   cd "$OUT"
   sha256sum repo.tracked.patch repo.untracked.tar.gz repo.git.bundle \
     native-proposal.tracked.patch native-proposal.untracked.tar.gz \
     native-proposal.git.bundle orderflow-kanban.before-hold.sqlite3 > SHA256SUMS
+  if [[ -f current-task-workspace.tar.gz ]]; then
+    sha256sum current-task-workspace.tar.gz >> SHA256SUMS
+  fi
 )
 (
   cd "$OUT"
@@ -60,6 +74,12 @@ done
 python3 - "$OUT" "$STAMP" <<'PY'
 import hashlib, json, pathlib, sys
 out=pathlib.Path(sys.argv[1]); stamp=sys.argv[2]
+def _hash_file(path):
+    h=hashlib.sha256()
+    with path.open("rb") as fh:
+        for chunk in iter(lambda:fh.read(1024*1024),b""):
+            h.update(chunk)
+    return h.hexdigest()
 data={"schema_version":1,"purpose":"Orderflow Kanban t_10ea1bd5 non-destructive local source preservation",
       "created_utc":stamp,"source_archives_uploaded":False,"checksums_verified":True,"components":{}}
 for name in ("repo","native-proposal"):
@@ -78,6 +98,13 @@ for name in ("repo","native-proposal"):
 dbfile=out/"orderflow-kanban.before-hold.sqlite3"
 data["database_backup"]={"sha256":hashlib.sha256(dbfile.read_bytes()).hexdigest(),
                           "bytes":dbfile.stat().st_size, "integrity_check":"ok"}
+current_archive=out/"current-task-workspace.tar.gz"
+if current_archive.is_file():
+    data["current_task_workspace"]={"present": True,
+       "sha256":_hash_file(current_archive),
+       "bytes":current_archive.stat().st_size}
+else:
+    data["current_task_workspace"]={"present": False}
 raw=(json.dumps(data,indent=2,sort_keys=True)+"\n").encode()
 p=out/"manifest.json";p.write_bytes(raw);p.chmod(0o600)
 PY
@@ -85,7 +112,7 @@ PY
 echo "LOCAL PRESERVATION: $OUT"
 echo "FILES: manifest, verified board SQLite backup, SHA256SUMS, patches, untracked archives, Git bundles"
 echo "No branches, commits, repository files, or Kanban cards were modified."
-echo "Scope: two previously identified dirty worktrees; other workspaces are NOT claimed preserved."
+echo "Scope: two previously identified dirty worktrees, plus current-task directory if present; other workspaces are NOT claimed preserved."
 
 if command -v gh >/dev/null 2>&1 &&
    [[ "$(gh api repos/Helminiak/knowledge-base --jq '.private' 2>/dev/null || true)" == "true" ]]; then
