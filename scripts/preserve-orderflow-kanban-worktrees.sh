@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Preserve t_10ea1bd5 worktrees non-destructively before resuming Kanban.
+# Preserve known Orderflow dirty worktrees and board state before native HOLD of t_10ea1bd5.
 # Source archives stay LOCAL; only an archive-manifest report is sent to PRIVATE GitHub.
 set -Eeuo pipefail
 umask 077
@@ -8,6 +8,20 @@ BASE="$HOME/.hermes/kanban/boards/orderflow-engineering/workspaces/t_d8af640b"
 STAMP="$(date -u +%Y%m%dT%H%M%SZ)-$$"
 OUT="$HOME/.local/state/dr100-recovery/t_10ea1bd5/$STAMP"
 mkdir -p "$OUT"
+# Online consistent SQLite snapshot: do not byte-copy a hot WAL database.
+python3 - "$HOME/.hermes/kanban/boards/orderflow-engineering/kanban.db" "$OUT/orderflow-kanban.before-hold.sqlite3" <<'PY'
+import pathlib, sqlite3, sys
+src,dest=map(pathlib.Path,sys.argv[1:])
+if not src.is_file():
+    raise SystemExit("SOURCE BOARD DB MISSING — STOP")
+with sqlite3.connect("file:"+str(src)+"?mode=ro",uri=True) as db:
+    with sqlite3.connect(dest) as out:
+        db.backup(out)
+with sqlite3.connect(dest) as db:
+    if db.execute("PRAGMA integrity_check").fetchone()[0]!="ok":
+        raise SystemExit("SQLITE SNAPSHOT INTEGRITY FAILURE — STOP")
+print("CONSISTENT ORDERFLOW SQLITE BACKUP: PASS")
+PY
 fail() { echo "ERROR: $*" >&2; exit 2; }
 
 for NAME in repo native-proposal; do
@@ -35,7 +49,7 @@ done
   cd "$OUT"
   sha256sum repo.tracked.patch repo.untracked.tar.gz repo.git.bundle \
     native-proposal.tracked.patch native-proposal.untracked.tar.gz \
-    native-proposal.git.bundle > SHA256SUMS
+    native-proposal.git.bundle orderflow-kanban.before-hold.sqlite3 > SHA256SUMS
 )
 (
   cd "$OUT"
@@ -56,18 +70,21 @@ for name in ("repo","native-proposal"):
     for kind in ("tracked.patch","untracked.tar.gz","git.bundle"):
         p=out/(name+"."+kind)
         h=hashlib.sha256()
-    with p.open("rb") as source:
-        for block in iter(lambda: source.read(1024*1024), b""):
-            h.update(block)
-    entry["archives"][kind]={"sha256":h.hexdigest(),"bytes":p.stat().st_size}
+        with p.open("rb") as source:
+            for block in iter(lambda: source.read(1024*1024), b""):
+                h.update(block)
+        entry["archives"][kind]={"sha256":h.hexdigest(),"bytes":p.stat().st_size}
     data["components"][name]=entry
+dbfile=out/"orderflow-kanban.before-hold.sqlite3"
+data["database_backup"]={"sha256":hashlib.sha256(dbfile.read_bytes()).hexdigest(),
+                          "bytes":dbfile.stat().st_size, "integrity_check":"ok"}
 raw=(json.dumps(data,indent=2,sort_keys=True)+"\n").encode()
 p=out/"manifest.json";p.write_bytes(raw);p.chmod(0o600)
 PY
 
 echo "LOCAL PRESERVATION: $OUT"
-echo "FILES: manifests, SHA256SUMS, binary-safe patches, untracked archives, Git bundles"
-echo "No branches, commits, repository files, or Kanban cards were modified."
+echo "FILES: manifest, verified board SQLite backup, SHA256SUMS, patches, untracked archives, Git bundles"
+echo "No branches, commits, repository files, or Kanban cards were modified."\necho "Scope: two previously identified dirty worktrees; other workspaces are NOT claimed preserved."
 
 if command -v gh >/dev/null 2>&1 &&
    [[ "$(gh api repos/Helminiak/knowledge-base --jq '.private' 2>/dev/null || true)" == "true" ]]; then
