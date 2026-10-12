@@ -89,7 +89,7 @@ def main():
     if plan["board_slug"]!=SLUG or {x["key"] for x in items}!=expected or len(items)!=9:
         raise RuntimeError("Unexpected manifest")
     for x in items:
-        if x["status"] not in ("todo","blocked") or (x["status"]=="blocked" and not x["reason"]):
+        if x["status"] not in ("triage","blocked") or (x["status"]=="blocked" and not x["reason"]):
             raise RuntimeError("Unsafe manifest status")
     found=inspect(items,allow_ready=not args.apply)
     print("DR100 board:",SLUG,"; manifest commit:",REV)
