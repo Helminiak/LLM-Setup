@@ -5,6 +5,12 @@ Native Hermes commands only for task mutations. NO worker dispatch.
 import argparse, datetime, fcntl, hashlib, json, os, pathlib, shutil
 import sqlite3, subprocess, sys, urllib.request
 
+# DR100 v2: historical WP003 registry importer. Preserve --plan, but fail closed
+# on --apply unless separately approved for a documented legacy rollback.
+# This environment variable is NOT permission to bypass owner/dispatch gates.
+if "--apply" in sys.argv and os.environ.get("DR100_ENABLE_LEGACY_KANBAN_IMPORT") != "1":
+    raise SystemExit("Historical Kanban --apply disabled under DR100 v2.0. Use native Kanban task/profile reconciliation; preserve IDs, parent holds, and current RUNNING owner.")
+
 H=pathlib.Path.home()
 SLUG="dr100-engineering-control"
 DB=H/".hermes/kanban/boards"/SLUG/"kanban.db"
