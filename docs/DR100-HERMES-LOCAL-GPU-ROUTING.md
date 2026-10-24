@@ -1,3 +1,5 @@
+> **DR100 LEGACY REFERENCE (2026-10-24):** Superseded for active DR100 routing by [DR100 single-worker v2.0](https://github.com/Helminiak/dr100-engineering-control/blob/main/policies/DR100_SINGLE_WORKER_V2.md). The Coder390 Q6_K LM Studio :1234 and 80K settings below are retained for reproducibility/rollback, not the current default. One GSQ-RCO Coder + MTP model on both 5090s at llama.cpp :1235, one `qwen-worker` session at a time. Do not invoke historical load, route-apply or queue-import steps to restore current service.
+
 # DR100: Make the RTX 5090 do actual Hermes work
 
 **Revision:** 2026-10-12. **Scope:** config/audit only, no DR100 source changes and no automatic cloud worker fallback.

@@ -1,0 +1,70 @@
+{
+  "schema_version": 2,
+  "name": "DR100 one logical Qwen worker on dual RTX 5090",
+  "status": "authoritative_git_default__runtime_activation_requires_safe_live_readback",
+  "model_alias": "dr100-gsq-coder-mtp-250k",
+  "family": "Qwen3.8-Flash-Next GSQ-RCO Coder + MTP",
+  "engine": "llama.cpp",
+  "api_url": "http://127.0.0.1:1235/v1",
+  "hardware": {
+    "gpu_count": 2,
+    "gpu_model": "NVIDIA RTX 5090 FE",
+    "one_model_uses_both_gpus": true,
+    "split_mode": "layer",
+    "tensor_split": [
+      1,
+      1
+    ],
+    "full_verified_transformer_offload": true,
+    "ngram_shard": "lazy host mmap"
+  },
+  "inference": {
+    "requested_context_tokens": 250000,
+    "observed_allocator_context_tokens": 250112,
+    "attention": "flash",
+    "kv_cache_k": "f16",
+    "kv_cache_v": "f16",
+    "mtp_enabled": true,
+    "mtp_type": "draft-mtp",
+    "mtp_depth": 3,
+    "reasoning": "xhigh",
+    "temperature": 1,
+    "top_p": 0.95,
+    "top_k": 20,
+    "context_shift": false,
+    "silent_truncation": false
+  },
+  "hermes": {
+    "profile": "qwen-worker",
+    "retired_profiles": [
+      "qwen-worker-2"
+    ],
+    "max_active_local_workers": 1,
+    "task_execution": "native Kanban sequential, fresh conversation per task",
+    "model_server_reloaded_between_tasks": false,
+    "required_approvals": "smart; YOLO OFF"
+  },
+  "kanban_target": {
+    "max_in_progress": 1,
+    "max_in_progress_per_profile": 1,
+    "dispatch_profiles": [
+      "qwen-worker"
+    ],
+    "dispatch_in_gateway": true
+  },
+  "checkpoints": {
+    "git_issue": "Helminiak/dr100-engineering-control#18",
+    "target_minutes": 15,
+    "event_driven_codex": true
+  },
+  "restrictions": [
+    "Do not auto-start an inference server",
+    "Do not auto-change a loaded model",
+    "Do not directly update Kanban SQLite",
+    "Do not bypass owner/Replay/SIM/trading/release gates"
+  ],
+  "references": {
+    "policy": "https://github.com/Helminiak/dr100-engineering-control/blob/main/policies/DR100_SINGLE_WORKER_V2.md",
+    "sop": "https://github.com/Helminiak/dr100-engineering-control/blob/main/docs/sop/terminal-dispatcher-handoff.md"
+  }
+}

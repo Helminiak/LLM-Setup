@@ -2,6 +2,11 @@
 # DR100 Hermes Cloud-Supervisor / Local-GPU-Worker route: read-only audit or explicit apply.
 # PUBLIC script; PRIVATE sanitized reports. Never logs API keys or local conversation content.
 set -euo pipefail
+# DR100 V2 GUARD: legacy --apply would restore LM Studio routing.
+if [[ "${1:---audit}" == "--apply" && "${DR100_ENABLE_LEGACY_LMSTUDIO:-}" != "1" ]]; then
+  echo "DR100 v2 single-worker llama.cpp :1235 is default; legacy LM Studio --apply disabled." >&2
+  exit 64
+fi
 python3 - "$@" <<'PY'
 import base64, datetime, json, os, pathlib, shutil, subprocess, sys
 

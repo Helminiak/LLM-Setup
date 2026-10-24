@@ -1,5 +1,9 @@
 # LLM-Setup
 
+## DR100 current default (2026-10-24)
+
+**One dual-GPU llama.cpp GSQ-RCO Coder + MTP model, one `qwen-worker` native Kanban executor.** See [v2 profile](profiles/rtx5090-dr100-qwen-v2.json), [read-only v2 audit](scripts/dr100-single-worker-v2-audit.sh) and the [control-repository authority](https://github.com/Helminiak/dr100-engineering-control/blob/main/policies/DR100_SINGLE_WORKER_V2.md). Legacy LM Studio loaders, routing scripts, Coder390 profiles and old Kanban importer manifests are **historical/rollback-only**; they do not define the current active route. Their dangerous old auto-load or route-apply paths require explicit legacy opt-in and any necessary owner approval. GitHub configuration is not proof of local runtime migration.
+
 Reproducible configuration, benchmarking, and operating documentation for local large-language-model systems.
 
 ## Repository purpose

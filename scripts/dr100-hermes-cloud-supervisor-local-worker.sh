@@ -2,6 +2,14 @@
 # DR100 interactive start: preserves Hermes cloud supervisor, injects LM Studio token
 # to child workers, validates the configured route, then runs existing v1.0.5 loader.
 set -euo pipefail
+# DR100 V2 GUARD: historical LM Studio launcher; requires explicit rollback opt-in.
+# Opt-in alone grants NO approval to replace active model, worker, task, or gateway.
+if [[ "${DR100_ENABLE_LEGACY_LMSTUDIO:-}" != "1" ]]; then
+  echo "DR100 v2 default is single dual-GPU llama.cpp :1235. Legacy LM Studio launcher disabled." >&2
+  echo "Use profiles/rtx5090-dr100-qwen-v2.json and native Hermes route; do not restart running service." >&2
+  echo "For owner-authorized legacy recovery ONLY: export DR100_ENABLE_LEGACY_LMSTUDIO=1" >&2
+  exit 64
+fi
 MODEL="qwen3.8-27b-coder390-efficientthink-opus5.5-gpt6astra-grok4.7-dsv4pro-k3-sft-rloo-ninfer@q6_k"
 REPO="https://raw.githubusercontent.com/Helminiak/LLM-Setup/main/scripts"
 LOCAL="$HOME/.local/state/dr100-lmstudio/bin"

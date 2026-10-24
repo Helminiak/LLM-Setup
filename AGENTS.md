@@ -19,3 +19,8 @@ Read the canonical policy for the full contract. Project-specific rules and loca
 - **Simplicity stop-loss (v1.2.0):** Define the functional acceptance target first; inspect native/existing options before adding layers; reconsider the architecture after two non-informative failures or roughly 30 minutes stalled on supporting infrastructure. Make one bounded vertical-slice test, preserve known-good fallbacks, and request required approval before any new persistent service or permission expansion.
 
 **Stalled-work help trigger (v1.2.0):** After two unsuccessful attempts at the same boundary or about 10 minutes without a newly verified result, reassess whether the work is essential, ask the operator one actionable question when useful, otherwise record the blocker and move on. During long supervised tasks give a concise substantive update at a safe boundary every ~20–30 minutes; never interrupt productive active operations merely to meet a clock.
+
+
+## DR100 active model default — v2.0 (2026-10-24)
+
+For DR100 changes, read [DR100 single-worker v2.0](https://github.com/Helminiak/dr100-engineering-control/blob/main/policies/DR100_SINGLE_WORKER_V2.md). One local `qwen-worker` uses one llama.cpp GSQ-RCO Coder + MTP model spanning both RTX 5090s at `127.0.0.1:1235/v1`; no new `qwen-worker-2` dispatch. The old LM Studio Coder390/80K loader, route-apply scripts and Kanban imports in this repo are *archival/rollback* and must not be applied to the active instance. Use `profiles/rtx5090-dr100-qwen-v2.json` for desired default properties. GitHub policy does not itself change effective local Hermes/Kanban settings. No live model reload, GUI overlap, unapproved queue mutation, trading or release changes.
