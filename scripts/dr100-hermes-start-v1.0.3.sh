@@ -2,6 +2,14 @@
 # DR100 local model recovery loader (v1.0.3): GitHub profile -> verified LM Studio -> private report -> Hermes.
 # Credentials and prompts NEVER enter GitHub. --setup-only skips Hermes.
 set -euo pipefail
+# DR100 V2 GUARD: historical LM Studio launcher; requires explicit rollback opt-in.
+# Opt-in alone grants NO approval to replace active model, worker, task, or gateway.
+if [[ "${DR100_ENABLE_LEGACY_LMSTUDIO:-}" != "1" ]]; then
+  echo "DR100 v2 default is single dual-GPU llama.cpp :1235. Legacy LM Studio launcher disabled." >&2
+  echo "Use profiles/rtx5090-dr100-qwen-v2.json and native Hermes route; do not restart running service." >&2
+  echo "For owner-authorized legacy recovery ONLY: export DR100_ENABLE_LEGACY_LMSTUDIO=1" >&2
+  exit 64
+fi
 python3 - "$@" <<'PY'
 import base64, datetime, getpass, hashlib, json, os, pathlib, shutil, subprocess, sys, time, urllib.request, urllib.error
 

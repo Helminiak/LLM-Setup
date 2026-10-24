@@ -1,12 +1,20 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "usage_status": "legacy_rollback_only_not_active_dr100",
+  "successor_profile": "profiles/rtx5090-dr100-qwen-v2.json",
   "name": "DR100 / RTX 5090 local-worker recovery baseline",
   "model_key": "qwen3.8-27b-coder390-efficientthink-opus5.5-gpt6astra-grok4.7-dsv4pro-k3-sft-rloo-ninfer@q6_k",
   "required_quantization": "Q6_K",
   "context_length": 80000,
-  "gpu_offload_attempts": ["max", "0.95", "0.90", "0.85", "0.80"],
+  "gpu_offload_attempts": [
+    "max",
+    "0.95",
+    "0.90",
+    "0.85",
+    "0.80"
+  ],
   "min_free_vram_mib": 1024,
-  "minimum_gpu_offload_ratio": 0.80,
+  "minimum_gpu_offload_ratio": 0.8,
   "max_parallel": 1,
   "desired_settings": {
     "flash_attention": true,
