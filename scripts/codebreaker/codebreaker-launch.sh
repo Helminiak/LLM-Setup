@@ -54,7 +54,9 @@ for n in 1 2; do
   [[ -f "$cfg" ]] || fail "Gyro-L worker $n profile is missing."
   grep -Fq 'http://127.0.0.1:8081/v1' "$cfg" || fail "Gyro-L worker $n endpoint is incorrect."
   grep -Fq 'http://127.0.0.1:8888/mcp/eng/' "$cfg" || fail "Gyro-L worker $n Hindsight route is missing."
+  [[ -x "$HOME/.local/bin/codebreaker-worker-$n" ]] || fail "Gyro-L worker $n launcher is missing or not executable."
 done
+command -v hermes >/dev/null 2>&1 || fail 'Hermes CLI is unavailable in this desktop session.'
 if ! command -v nvidia-smi >/dev/null 2>&1; then fail 'nvidia-smi is unavailable; GPU reserve could not be verified.'; fi
 mapfile -t free_mib < <(nvidia-smi --query-gpu=memory.free --format=csv,noheader,nounits 2>>"$LOG") || fail 'Could not read GPU memory.'
 [[ ${#free_mib[@]} -eq 2 ]] || fail 'Expected exactly two visible GPUs.'
@@ -64,10 +66,25 @@ for i in 0 1; do
 done
 log "Ready: Gyro-L slots=2 x 64000; Hindsight eng healthy; worker profiles 1 and 2 available; free VRAM ${free_mib[0]}/${free_mib[1]} MiB."
 if [[ "$ACTION" == --check ]]; then exit 0; fi
-[[ "$ACTION" == --launch ]] || fail 'Usage: codebreaker-launch.sh [--check|--launch]'
-control="$HOME/.local/share/dr100-hermes/dr100-hermes-control.sh"
-[[ -x "$control" ]] || fail 'Existing Hermes Supervisor safety launcher is missing.'
-lock="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/codebreaker-launch.lock"
-if ! flock -n "$lock" "$control" supervisor >>"$LOG" 2>&1; then
-  fail 'Hermes Supervisor did not start. Existing Hermes safety preflight may have blocked a duplicate session; see startup log.'
+[[ "$ACTION" == --launch || "$ACTION" == --session ]] || fail 'Usage: codebreaker-launch.sh [--check|--launch]'
+lock="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/codebreaker-supervisor.lock"
+if [[ "$ACTION" == --session ]]; then
+  exec 9>"$lock"
+  flock -n 9 || { log 'Supervisor already has an active Codebreaker session.'; exit 0; }
+  log 'Starting Hermes Supervisor with its existing hermes-supervisor profile.'
+  set +e
+  hermes -p hermes-supervisor chat --tui
+  rc=$?
+  set -e
+  if (( rc != 0 )); then
+    notify_error "Hermes Supervisor exited with status $rc. Check the Hermes profile and startup log at $LOG."
+  fi
+  exit "$rc"
 fi
+if ! flock -n "$lock" true; then
+  log 'An interactive Codebreaker Supervisor session is already running; reusing it.'
+  exit 0
+fi
+command -v gnome-terminal >/dev/null 2>&1 || fail 'GNOME Terminal is required to open the interactive Supervisor session.'
+log 'Opening one Hermes Supervisor terminal; DR100 launcher and dispatch checks are not part of Codebreaker startup.'
+gnome-terminal --wait --title='Codebreaker — Hermes Supervisor' -- "$HOME/.local/bin/codebreaker-launch" --session >>"$LOG" 2>&1 || fail 'Could not open the Hermes Supervisor terminal. Check GNOME Terminal and the startup log.'
