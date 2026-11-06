@@ -13,9 +13,9 @@ Status: **production deployment reported validated**. This file is a version-con
 
 ## Validated launch parameters
 ```text
---ctx-size 128000 --parallel 2 --cache-type-k q8_0 --cache-type-v q8_0 --split-mode layer --tensor-split 0.975,1.025 --n-gpu-layers 999 --flash-attn on --ngram-on-disk --jinja
+--ctx-size 128000 --parallel 1 --cache-type-k q8_0 --cache-type-v q8_0 --split-mode layer --tensor-split 0.975,1.025 --n-gpu-layers 999 --flash-attn on --ngram-on-disk --jinja
 ```
-Preserve other verified production-unit flags, environment, and service dependencies; this is a parameter reference, not a complete replacement unit. Each inference slot has **64,000 tokens** of context. Two slots do not automatically create two Hermes coding workers.
+Preserve other verified production-unit flags, environment, and service dependencies; this is a parameter reference, not a complete replacement unit. **Updated 2026-11-06 (later same day): `--parallel` was reduced from 2 to 1, so the service now exposes one slot with the full 128,000-token context rather than two 64,000-token slots.** Measured decode throughput rose from 89.5–90.8 to 103.4 tokens/s (+14.7 %) with byte-identical outputs and ≥2 GiB free VRAM per GPU; requests are now serialised. A single slot does not create or remove Hermes coding workers. See `benchmarks/local-models/gyro-l-slot-optimization-2026-11-06/REPORT.md`.
 
 ## Hardware and operational constraints
 - 2 × NVIDIA RTX 5090 FE, 32,112 MiB reported per GPU
@@ -29,6 +29,7 @@ Preserve other verified production-unit flags, environment, and service dependen
 - HTTP health 200; `/slots` two 64,000-token slots
 - Two simultaneous 57,476-token requests: 2/2 exact retrieval, normal stop, 72.47 seconds combined
 - 12/12 short stabilization checks over approximately 110 seconds; 0 restarts, 0 CUDA/allocation errors
+- Slot reduction to `--parallel 1` (2026-11-06, later same day): 123,639-token prompt accepted with exact needle retrieval at 1,481.97 tokens/s prefill, 7/7 behavioural correctness assertions on generated code, minimum free VRAM 2,996 MiB (GPU0) / 3,662 MiB (GPU1), 0 CUDA/allocation errors
 - Production deployment completed 2026-11-06 00:39 EST; rollback unit preserved; rollback timer disarmed after success
 - Limitations: not a sustained multi-day test, full-context stress test, or verified Hermes two-worker dispatch test
 

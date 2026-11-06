@@ -1,0 +1,50 @@
+{
+ "label": "ngrammod",
+ "server": {},
+ "tasks": {
+  "kth-largest": {
+   "wall_s": 0.73,
+   "prompt_tokens": 41,
+   "completion_tokens": 31,
+   "prefill_tps": 119.0,
+   "decode_tps": 94.6,
+   "spec": {},
+   "finish": "stop"
+  },
+  "merge-intervals": {
+   "wall_s": 1.535,
+   "prompt_tokens": 35,
+   "completion_tokens": 113,
+   "prefill_tps": 265.9,
+   "decode_tps": 87.6,
+   "spec": {},
+   "finish": "stop"
+  },
+  "lru-cache": {
+   "wall_s": 1.885,
+   "prompt_tokens": 37,
+   "completion_tokens": 146,
+   "prefill_tps": 314.5,
+   "decode_tps": 89.4,
+   "spec": {},
+   "finish": "stop"
+  },
+  "long-probe": "skipped"
+ },
+ "aggregate": {
+  "decode_tps_weighted": 89.2,
+  "sum_decode_tokens": 290,
+  "sum_decode_wall_s": 4.15,
+  "prefill_tps_probe": null,
+  "long_ctx_tokens": 0,
+  "long_ctx_prefill_tps": null,
+  "long_ctx_wall_s": 0,
+  "needle_ok": false,
+  "correctness_sha": "13fbfe5a90dc72ca"
+ },
+ "server_error": "HTTPError: HTTP Error 501: Not Implemented",
+ "peak_vram_used_mib": {
+  "0": 28354,
+  "1": 27874
+ }
+}

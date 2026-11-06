@@ -1,0 +1,53 @@
+{
+ "started_at": "2026-11-06T08:49:14-0500",
+ "base": "http://127.0.0.1:8081",
+ "config": {
+  "ctx_size": 128000,
+  "parallel": 1,
+  "cache_type_kv": "q8_0"
+ },
+ "prompt_tokens_fitted": 123627,
+ "prompt_chars": 382755,
+ "ok": true,
+ "err": null,
+ "wall_s": 83.76,
+ "prompt_tokens_reported": 123639,
+ "completion_tokens": 5,
+ "finish_reason": "stop",
+ "content": "7391",
+ "needle_correct": true,
+ "prefill_tps_from_timings": 1482.0,
+ "prefill_tps_from_wall": 1476.1,
+ "timings": {
+  "cache_n": 0,
+  "prompt_n": 123639,
+  "prompt_ms": 83429.045,
+  "prompt_per_token_ms": 0.6747793576460501,
+  "prompt_per_second": 1481.965902881904,
+  "predicted_n": 5,
+  "predicted_ms": 127.419,
+  "predicted_per_token_ms": 31.85475,
+  "predicted_per_second": 31.39249248542211
+ },
+ "vram_before": {
+  "0": {
+   "used": 29116,
+   "free": 2996
+  },
+  "1": {
+   "used": 28450,
+   "free": 3662
+  }
+ },
+ "vram_after": {
+  "0": {
+   "used": 29116,
+   "free": 2996
+  },
+  "1": {
+   "used": 28450,
+   "free": 3662
+  }
+ },
+ "min_free_mib": 2996
+}

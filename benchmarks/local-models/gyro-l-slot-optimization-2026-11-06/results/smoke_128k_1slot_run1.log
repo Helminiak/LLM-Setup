@@ -1,0 +1,11 @@
+[07:12:00] idle check: 20 request-ish lines in last 25s
+[07:12:00] stopping gyro-l.service
+[07:12:03] starting TEMP 128K / 1-slot instance
+[07:13:15] temp healthy=True alive=True after 72s
+[07:13:15] ctx={'n_ctx': None, 'total_slots': 1, 'n_ctx_slot': None} free=[3122, 3792] MiB
+[07:13:16] prompt chars=261135 tokens=86943
+[07:14:12] inference ok=True wall=55.7s prompt_tokens=86955 prefill=None decode=None err=None
+[07:14:12] answer='7391'
+[07:14:12] stopping temp instance
+[07:14:13] FAIL -> unit set to ['--ctx-size 128000', '--parallel 2']; restarting service
+SUMMARY_JSON {"original_unit": {"ctx": "65536", "parallel": "1", "cache_type": ["--cache-type-k q8_0", "--cache-type-v q8_0"]}, "baseline_vram": {"0": {"used": 27912, "free": 4200}, "1": {"used": 27334, "free": 4778}}, "journal_request_activity_25s": 20, "temp_load_s": 72.1, "vram_after_load": {"0": {"used": 28990, "free": 3122}, "1": {"used": 28320, "free": 3792}}, "temp_props": {"n_ctx": null, "total_slots": 1, "n_ctx_slot": null}, "prompt_tokens_estimate": 86943, "peak_vram_used": {"0": 29112, "1": 28446}, "inference": {"ok": true, "wall_s": 55.7358749720006, "prompt_tokens": 86955, "completion_tokens": 5, "finish_reason": "stop", "content": "7391", "prefill_tps": null, "decode_tps": null, "prompt_ms": 55344.052, "predicted_ms": 106.711}, "cuda_oom_lines": [], "min_free_mib_during_test": 3122, "pass_checks": {"http_ok": true, "context_ge_115k": false, "needle_correct": true, "no_cuda_oom_lines": true, "no_crash": true, "min_free_ge_2gib": true}, "decided": "FAIL", "unit_applied": ["--ctx-size 128000", "--parallel 2"], "final_load_s": 70.1, "service_active": "active", "service_enabled": "enabled", "final_props": {"n_ctx": null, "total_slots": 2}, "post_restart_probe": {"ok": true, "content": "OK", "decode_tps": null}, "final_vram": {"0": {"used": 28346, "free": 3766}, "1": {"used": 27866, "free": 4246}}}
