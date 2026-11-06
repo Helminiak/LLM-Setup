@@ -93,3 +93,9 @@ Every benchmark should record enough configuration to reproduce it, including wh
 - relevant hardware state
 
 The goal is to distinguish actual performance changes from configuration drift.
+
+## Shared Gyro-L inference service and Codebreaker (2026-11-06)
+
+The workstation also has a shared Gyro-L service for local supervisor and coding sessions: two 64,000-token inference slots, Q8_0 K/V, layer split 0.975/1.025, loopback endpoint `http://127.0.0.1:8081/v1`. It is a single layer-distributed model service, not two physical model instances. See [Codebreaker and Gyro-L verification](docs/CODEBREAKER-GYRO-L-VERIFICATION-2026-11-06.md), [benchmark results](benchmarks/codebreaker-workers-2026-11-06.md), and [production model details](configs/models/production-gyro-l-q8-dual5090.md).
+
+Install the `Codebreaker` Ubuntu desktop icon with `scripts/codebreaker/install-codebreaker.sh`. It starts or reuses the enabled `gyro-l.service` and Hindsight service, checks readiness and GPU reserve, then calls the existing guarded Hermes Supervisor launcher. Two separate local worker profiles are available through `codebreaker-worker-1` and `codebreaker-worker-2`; the existing native DR100 Kanban dispatch remains unchanged and single-worker by policy.
