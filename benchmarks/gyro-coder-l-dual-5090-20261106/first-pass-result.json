@@ -1,0 +1,47 @@
+{
+  "prompt": "Return only one complete Rust 2021 source file, with no markdown fences. Implement a small line-oriented task tracker: struct Task { id: u32, title: String, done: bool }, fn parse_tasks(input: &str) -> Vec<Task> parsing lines `id|done|title`, fn complete_task(tasks: &mut [Task], id: u32) -> bool, and fn render_tasks(tasks: &[Task]) -> String. Use standard library only. Include at least six unit tests covering parsing, malformed lines, completion success and miss, rendering, and empty input. Keep the implementation clear and compilable.",
+  "same_parameters": {
+    "temperature": 0,
+    "top_p": 0.95,
+    "top_k": 20,
+    "min_p": 0.05,
+    "max_tokens": 1100
+  },
+  "concurrent_wall_seconds": 11.290710831999604,
+  "aggregate_generated_tokens_per_sec": 194.85044234459207,
+  "sum_individual_generation_rates": 201.1081069814125,
+  "gpu_before": "0, 0 %, 30032 MiB, 2080 MiB\n1, 0 %, 30016 MiB, 2096 MiB",
+  "gpu_after": "0, 72 %, 30036 MiB, 2076 MiB\n1, 90 %, 30020 MiB, 2092 MiB",
+  "workers": {
+    "gpu0": {
+      "worker": "gpu0",
+      "port": 8082,
+      "wall_seconds": 11.202157159001217,
+      "prompt_tokens": 183,
+      "generated_tokens": 1100,
+      "prompt_processing_ms": 252.373,
+      "generation_ms": 10939.629,
+      "prompt_tokens_per_sec": 558.6968495045032,
+      "generation_tokens_per_sec": 100.4604452308209,
+      "rust_compile": "FAIL",
+      "rust_tests": "FAIL",
+      "compile_seconds": 0.016911455000808928,
+      "test_output": "de comment? Not necessary. Maybe use `#![allow(...)]`? No.\n   |                                                                                                                                 ^\n   |\nhelp: Unicode character '`' (Grave Accent) looks like ''' (Single Quote), but it is not\n   |\n14 - Need consider edition 2021? Source file doesn't specify edition. Could include comment? Not necessary. Maybe use `#![allow(...)]`? No.\n14 + Need consider edition 2021? Source file doesn't specify edition. Could include comment? Not necessary. Maybe use `#![allow(...)]'? No.\n   |\n\nerror: unknown start of token: \\\n  --> main.rs:16:753\n   |\n16 | ...paces. But likely okay. Better not trim title except maybe remove \\r? lines() handles CRLF. Could trim title? If title \"  foo \" maybe ...\n   |                                                                      ^\n\nerror: expected identifier, found `<`\n --> main.rs:1:1\n  |\n1 | <think>\n  | ^ expected identifier\n\nerror: aborting due to 4 previous errors\n\n"
+    },
+    "gpu1": {
+      "worker": "gpu1",
+      "port": 8083,
+      "wall_seconds": 11.2730864260011,
+      "prompt_tokens": 183,
+      "generated_tokens": 1100,
+      "prompt_processing_ms": 219.564,
+      "generation_ms": 10919.28,
+      "prompt_tokens_per_sec": 642.1817784336231,
+      "generation_tokens_per_sec": 100.64766175059161,
+      "rust_compile": "FAIL",
+      "rust_tests": "FAIL",
+      "compile_seconds": 0.016436711004644167,
+      "test_output": "de comment? Not necessary. Maybe use `#![allow(...)]`? No.\n   |                                                                                                                                 ^\n   |\nhelp: Unicode character '`' (Grave Accent) looks like ''' (Single Quote), but it is not\n   |\n14 - Need consider edition 2021? Source file doesn't specify edition. Could include comment? Not necessary. Maybe use `#![allow(...)]`? No.\n14 + Need consider edition 2021? Source file doesn't specify edition. Could include comment? Not necessary. Maybe use `#![allow(...)]'? No.\n   |\n\nerror: unknown start of token: \\\n  --> main.rs:16:753\n   |\n16 | ...paces. But likely okay. Better not trim title except maybe remove \\r? lines() handles CRLF. Could trim title? If title \"  foo \" maybe ...\n   |                                                                      ^\n\nerror: expected identifier, found `<`\n --> main.rs:1:1\n  |\n1 | <think>\n  | ^ expected identifier\n\nerror: aborting due to 4 previous errors\n\n"
+    }
+  }
+}

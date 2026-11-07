@@ -1,0 +1,47 @@
+{
+  "prompt": "BEGIN WITH `struct Task` ON THE FIRST CHARACTER. Output only one complete Rust 2021 source file, no reasoning, no markdown, no `<think>` tags. Implement a line-oriented task tracker with struct Task { id: u32, title: String, done: bool }, parse_tasks(input: &str) -> Vec<Task> for lines id|done|title, complete_task(tasks: &mut [Task], id: u32) -> bool, render_tasks(tasks: &[Task]) -> String, and six unit tests. Standard library only; keep code concise and compilable.",
+  "same_parameters": {
+    "temperature": 0,
+    "top_p": 0.95,
+    "top_k": 20,
+    "min_p": 0.05,
+    "max_tokens": 1100
+  },
+  "concurrent_wall_seconds": 14.56921375499951,
+  "aggregate_generated_tokens_per_sec": 192.1860744914367,
+  "sum_individual_generation_rates": 197.77698107961777,
+  "gpu_before": "0, 0 %, 30036 MiB, 2076 MiB\n1, 0 %, 30020 MiB, 2092 MiB",
+  "gpu_after": "0, 90 %, 30036 MiB, 2076 MiB\n1, 93 %, 30020 MiB, 2092 MiB",
+  "workers": {
+    "gpu0": {
+      "worker": "gpu0",
+      "port": 8082,
+      "wall_seconds": 14.550155315999291,
+      "prompt_tokens": 185,
+      "generated_tokens": 1400,
+      "prompt_processing_ms": 279.899,
+      "generation_ms": 14147.206,
+      "prompt_tokens_per_sec": 660.9527007956442,
+      "generation_tokens_per_sec": 98.88878411751409,
+      "rust_compile": "FAIL",
+      "rust_tests": "FAIL",
+      "compile_seconds": 0.01801300900115166,
+      "test_output": "error: unknown start of token: `\n  --> main.rs:51:9\n   |\n51 | Need no `` tags. final only code. Ensure no leading newline. final starts struct Task.\n   |         ^^\n   |\n   = note: character appears once more\nhelp: Unicode character '`' (Grave Accent) looks like ''' (Single Quote), but it is not\n   |\n51 - Need no `` tags. final only code. Ensure no leading newline. final starts struct Task.\n51 + Need no '' tags. final only code. Ensure no leading newline. final starts struct Task.\n   |\n\nerror: this file contains an unclosed delimiter\n  --> main.rs:74:80\n   |\n73 | fn render_tasks(tasks: &[Task]) -> String {\n   |                                           - unclosed delimiter\n74 |     tasks.iter().map(|task| format!(\"{}|{}|{}\", task.id, task.done, task.title\n   |                     -              - unclosed delimiter                       ^\n   |                     |\n   |                     unclosed delimiter\n\nerror: aborting due to 2 previous errors\n\n"
+    },
+    "gpu1": {
+      "worker": "gpu1",
+      "port": 8083,
+      "wall_seconds": 14.54981393700291,
+      "prompt_tokens": 185,
+      "generated_tokens": 1400,
+      "prompt_processing_ms": 276.429,
+      "generation_ms": 14147.29,
+      "prompt_tokens_per_sec": 669.24960839854,
+      "generation_tokens_per_sec": 98.88819696210368,
+      "rust_compile": "FAIL",
+      "rust_tests": "FAIL",
+      "compile_seconds": 0.018148932002077345,
+      "test_output": "error: unknown start of token: `\n  --> main.rs:51:9\n   |\n51 | Need no `` tags. final only code. Ensure no leading newline. final starts struct Task.\n   |         ^^\n   |\n   = note: character appears once more\nhelp: Unicode character '`' (Grave Accent) looks like ''' (Single Quote), but it is not\n   |\n51 - Need no `` tags. final only code. Ensure no leading newline. final starts struct Task.\n51 + Need no '' tags. final only code. Ensure no leading newline. final starts struct Task.\n   |\n\nerror: this file contains an unclosed delimiter\n  --> main.rs:74:80\n   |\n73 | fn render_tasks(tasks: &[Task]) -> String {\n   |                                           - unclosed delimiter\n74 |     tasks.iter().map(|task| format!(\"{}|{}|{}\", task.id, task.done, task.title\n   |                     -              - unclosed delimiter                       ^\n   |                     |\n   |                     unclosed delimiter\n\nerror: aborting due to 2 previous errors\n\n"
+    }
+  }
+}
