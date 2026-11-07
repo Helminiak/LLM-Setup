@@ -1,0 +1,3 @@
+# Methodology
+
+The controller in `scripts/agent_concurrency_benchmark.py` starts stages at 2, 4, 6, and 8 candidates but stops at the first measured plateau. Each agent is assigned a private directory, sends the same deterministic Rust clamp task to port 8082 or 8083 round-robin, extracts only the model's final code section, compiles with `rustc --test`, and executes the generated tests. It records request timing, actual usage tokens, server timings, health, GPU telemetry, memory, swap, and errors. The six-agent confirmation is in `results/confirmation.json` and is intentionally recorded as failed output completion.

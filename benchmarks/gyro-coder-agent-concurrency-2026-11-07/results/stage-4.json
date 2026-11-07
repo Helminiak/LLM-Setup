@@ -1,0 +1,71 @@
+{
+  "agents": 4,
+  "elapsed_s": 29.698975674000394,
+  "completed": 4,
+  "correct": 4,
+  "correct_per_min": 8.081086790144923,
+  "aggregate_tok_s": 211.58978912196125,
+  "p50_latency_s": 14.904461550999258,
+  "p95_latency_s": 29.63938437899924,
+  "queue_limit": 4,
+  "estimated_max_waiting_per_gpu": 1,
+  "health_before": true,
+  "health_after": true,
+  "mem_before_kib": 49265528,
+  "mem_after_kib": 48512580,
+  "swap_delta_kib": -6188,
+  "gpu_before": "0, 91 %, 30038 MiB, 2074 MiB, 51, 318.86 W\n1, 0 %, 30016 MiB, 2096 MiB, 47, 249.46 W",
+  "gpu_after": "0, 93 %, 30038 MiB, 2074 MiB, 56, 318.52 W\n1, 63 %, 30016 MiB, 2096 MiB, 53, 320.07 W",
+  "agent_errors": 0,
+  "workers": [
+    {
+      "agent": 0,
+      "gpu": 0,
+      "wall_s": 14.904461550999258,
+      "prompt_tokens": 120,
+      "generated_tokens": 1571,
+      "generation_tps": 107.72902212308102,
+      "finish_reason": "stop",
+      "compile": true,
+      "tests": true,
+      "error": null
+    },
+    {
+      "agent": 1,
+      "gpu": 1,
+      "wall_s": 29.63938437899924,
+      "prompt_tokens": 120,
+      "generated_tokens": 1571,
+      "generation_tps": 107.10170971848419,
+      "finish_reason": "stop",
+      "compile": true,
+      "tests": true,
+      "error": null
+    },
+    {
+      "agent": 2,
+      "gpu": 0,
+      "wall_s": 29.650615126003686,
+      "prompt_tokens": 120,
+      "generated_tokens": 1571,
+      "generation_tps": 106.97706459431878,
+      "finish_reason": "stop",
+      "compile": true,
+      "tests": true,
+      "error": null
+    },
+    {
+      "agent": 3,
+      "gpu": 1,
+      "wall_s": 14.90095603899681,
+      "prompt_tokens": 120,
+      "generated_tokens": 1571,
+      "generation_tps": 107.83829887487565,
+      "finish_reason": "stop",
+      "compile": true,
+      "tests": true,
+      "error": null
+    }
+  ],
+  "status": "PASS"
+}

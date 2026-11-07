@@ -1,0 +1,69 @@
+{
+  "agents": 6,
+  "wall_s": 59.7552351589984,
+  "correct": 0,
+  "workers": [
+    {
+      "agent": 0,
+      "gpu": 0,
+      "wall_s": 21.202625085003092,
+      "generated": 2048,
+      "generation_tps": 97.78458442984709,
+      "compile": false,
+      "tests": false,
+      "finish": "length"
+    },
+    {
+      "agent": 1,
+      "gpu": 1,
+      "wall_s": 21.202957752997463,
+      "generated": 2048,
+      "generation_tps": 97.77503288025807,
+      "compile": false,
+      "tests": false,
+      "finish": "length"
+    },
+    {
+      "agent": 2,
+      "gpu": 0,
+      "wall_s": 40.45331454700499,
+      "generated": 2048,
+      "generation_tps": 107.3064191150738,
+      "compile": false,
+      "tests": false,
+      "finish": "length"
+    },
+    {
+      "agent": 3,
+      "gpu": 1,
+      "wall_s": 40.49633367899514,
+      "generated": 2048,
+      "generation_tps": 107.12902584284953,
+      "compile": false,
+      "tests": false,
+      "finish": "length"
+    },
+    {
+      "agent": 4,
+      "gpu": 0,
+      "wall_s": 59.75185654500092,
+      "generated": 2048,
+      "generation_tps": 106.44385736523114,
+      "compile": false,
+      "tests": false,
+      "finish": "length"
+    },
+    {
+      "agent": 5,
+      "gpu": 1,
+      "wall_s": 59.75121054700139,
+      "generated": 2048,
+      "generation_tps": 106.71585223060633,
+      "compile": false,
+      "tests": false,
+      "finish": "length"
+    }
+  ],
+  "health0": true,
+  "health1": true
+}

@@ -1,0 +1,47 @@
+{
+  "agents": 2,
+  "elapsed_s": 16.44133711500035,
+  "completed": 2,
+  "correct": 2,
+  "correct_per_min": 7.298676449527775,
+  "aggregate_tok_s": 191.10367837013558,
+  "p50_latency_s": 15.777468448002764,
+  "p95_latency_s": 15.777468448002764,
+  "queue_limit": 4,
+  "estimated_max_waiting_per_gpu": 0,
+  "health_before": true,
+  "health_after": true,
+  "mem_before_kib": 50476672,
+  "mem_after_kib": 49267484,
+  "swap_delta_kib": -2140,
+  "gpu_before": "0, 0 %, 30038 MiB, 2074 MiB, 36, 19.81 W\n1, 0 %, 30012 MiB, 2100 MiB, 39, 17.49 W",
+  "gpu_after": "0, 91 %, 30038 MiB, 2074 MiB, 51, 318.86 W\n1, 0 %, 30016 MiB, 2096 MiB, 47, 249.46 W",
+  "agent_errors": 0,
+  "workers": [
+    {
+      "agent": 0,
+      "gpu": 0,
+      "wall_s": 16.371547741997347,
+      "prompt_tokens": 120,
+      "generated_tokens": 1571,
+      "generation_tps": 100.9249741741348,
+      "finish_reason": "stop",
+      "compile": true,
+      "tests": true,
+      "error": null
+    },
+    {
+      "agent": 1,
+      "gpu": 1,
+      "wall_s": 15.777468448002764,
+      "prompt_tokens": 120,
+      "generated_tokens": 1571,
+      "generation_tps": 102.76898932001097,
+      "finish_reason": "stop",
+      "compile": true,
+      "tests": true,
+      "error": null
+    }
+  ],
+  "status": "PASS"
+}
