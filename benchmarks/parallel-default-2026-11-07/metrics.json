@@ -1,0 +1,481 @@
+{
+  "status_by_task": {
+    "dag": "approved",
+    "events": "approved",
+    "artifacts": "approved",
+    "redact": "approved",
+    "cpu-build": "complete",
+    "cpu-tests": "complete",
+    "cpu-analysis": "complete"
+  },
+  "accepted_deliverables": 4,
+  "execution_wall_s": 402.6784420013428,
+  "acceptance_wall_s": 685.0933046340942,
+  "accepted_per_minute": 0.35031724639052353,
+  "generated_tokens": 43534,
+  "generated_tokens_per_wall_second": 63.54462918485439,
+  "decode_tokens_per_service_second": 84.21600592648232,
+  "uncached_prompt_tokens": 523220,
+  "prompt_tokens_per_processing_second": 1857.0899338268407,
+  "prompt_processing_service_s": 281.741875,
+  "decode_service_s": 516.9326130000001,
+  "cache_tokens_observed": 3026802,
+  "maximum_requested_prompt_tokens": 105292,
+  "maximum_prompt_tokens": 61605,
+  "rejected_context_requests": [
+    {
+      "gpu": 1,
+      "tokens": 103006,
+      "status": 400
+    },
+    {
+      "gpu": 1,
+      "tokens": 105292,
+      "status": 400
+    },
+    {
+      "gpu": 0,
+      "tokens": 100524,
+      "status": 400
+    },
+    {
+      "gpu": 0,
+      "tokens": 102421,
+      "status": 400
+    }
+  ],
+  "initial_prompt_tokens_by_gpu": {
+    "0": [
+      49563,
+      49612
+    ],
+    "1": [
+      49607,
+      49643
+    ]
+  },
+  "context_high_water_prompt_plus_output": 62167,
+  "gpu_queue_wait_total_s": 734.7582835119101,
+  "gpu_queue_wait_max_s": 41.04424416599795,
+  "average_worker_execution_s": 231.10762507574898,
+  "peak_ram_used_mib": 32678.015625,
+  "minimum_memavailable_mib": 30200.0703125,
+  "cpu_mean_percent": 6.956365925561389,
+  "cpu_peak_percent": 15.989320676357163,
+  "iowait_mean_percent": 2.1370457108527905,
+  "per_core_mean_percent": {
+    "cpu0": 4.817607756015244,
+    "cpu1": 3.1019657926013466,
+    "cpu2": 5.668861380712186,
+    "cpu3": 2.411929358857764,
+    "cpu4": 41.67001866613062,
+    "cpu5": 30.986880672170294,
+    "cpu6": 35.28953439639162,
+    "cpu7": 42.91734523489731,
+    "cpu8": 8.381727870788211,
+    "cpu9": 1.4356658100524928,
+    "cpu10": 6.362898816135525,
+    "cpu11": 1.7969782086025436,
+    "cpu12": 6.451066178952093,
+    "cpu13": 1.84644340499157,
+    "cpu14": 6.514932285543707,
+    "cpu15": 1.4978857441694344,
+    "cpu16": 2.566923178206119,
+    "cpu17": 2.165906581502298,
+    "cpu18": 1.8092989749341262,
+    "cpu19": 1.5045367975064279,
+    "cpu20": 1.343819131260757,
+    "cpu21": 1.3582982886239616,
+    "cpu22": 1.2342062609793334,
+    "cpu23": 1.1238586301976077,
+    "cpu24": 1.1605655121062852,
+    "cpu25": 1.0672842250257395,
+    "cpu26": 1.0397750324360302,
+    "cpu27": 0.9615843253332195,
+    "cpu28": 0.9771172077282418,
+    "cpu29": 0.8973893431933421,
+    "cpu30": 0.9162734115401627,
+    "cpu31": 1.082267650073523
+  },
+  "swap_pages_delta": [
+    219254,
+    45215
+  ],
+  "gpu": {
+    "0": {
+      "inference_occupied_s": 436.5332131385803,
+      "inference_idle_s": 248.56009149551392,
+      "mean_sampled_util_percent": 71.10183299389001,
+      "peak_vram_mib": 30046.0,
+      "minimum_free_vram_mib": 2066.0,
+      "peak_temperature_c": 67.0,
+      "peak_power_w": 422.21
+    },
+    "1": {
+      "inference_occupied_s": 411.06961393356323,
+      "inference_idle_s": 274.023690700531,
+      "mean_sampled_util_percent": 64.63747454175153,
+      "peak_vram_mib": 30030.0,
+      "minimum_free_vram_mib": 2082.0,
+      "peak_temperature_c": 69.0,
+      "peak_power_w": 413.41
+    }
+  },
+  "cpu_tasks": [
+    {
+      "id": "cpu-build",
+      "queue": "build",
+      "start": 1794024237.2737172,
+      "end": 1794024237.339066,
+      "exit": 0,
+      "threads": 8
+    },
+    {
+      "id": "cpu-analysis",
+      "queue": "analysis",
+      "start": 1794024237.273545,
+      "end": 1794024237.3393729,
+      "exit": 0,
+      "threads": 6
+    },
+    {
+      "id": "cpu-tests",
+      "queue": "test",
+      "start": 1794024237.2743964,
+      "end": 1794024237.6397982,
+      "exit": 0,
+      "threads": 6
+    },
+    {
+      "id": "manual-1794024364461942249",
+      "queue": "analysis",
+      "start": 1794024364.4620693,
+      "end": 1794024364.4699516,
+      "exit": 0,
+      "threads": 6
+    },
+    {
+      "id": "recover-dag",
+      "queue": "test",
+      "start": 1794024695.2067153,
+      "end": 1794024695.2226517,
+      "exit": 0,
+      "threads": 6
+    },
+    {
+      "id": "recover-events",
+      "queue": "test",
+      "start": 1794024695.31579,
+      "end": 1794024695.3320143,
+      "exit": 0,
+      "threads": 6
+    },
+    {
+      "id": "recover-artifacts",
+      "queue": "test",
+      "start": 1794024695.4074554,
+      "end": 1794024695.4395313,
+      "exit": 0,
+      "threads": 6
+    },
+    {
+      "id": "recover-redact",
+      "queue": "test",
+      "start": 1794024695.5045524,
+      "end": 1794024695.5204341,
+      "exit": 0,
+      "threads": 6
+    },
+    {
+      "id": "manual-1794024696006253474",
+      "queue": "build",
+      "start": 1794024696.0064118,
+      "end": 1794024696.0384803,
+      "exit": 0,
+      "threads": 8
+    },
+    {
+      "id": "manual-1794024696110604873",
+      "queue": "test",
+      "start": 1794024696.1107228,
+      "end": 1794024696.1750994,
+      "exit": 1,
+      "threads": 6
+    },
+    {
+      "id": "revalidate-dag",
+      "queue": "test",
+      "start": 1794024709.5028186,
+      "end": 1794024709.5187156,
+      "exit": 0,
+      "threads": 6
+    },
+    {
+      "id": "revalidate-artifacts",
+      "queue": "test",
+      "start": 1794024709.5191064,
+      "end": 1794024709.5510447,
+      "exit": 0,
+      "threads": 6
+    },
+    {
+      "id": "revalidate-redact",
+      "queue": "test",
+      "start": 1794024709.5512621,
+      "end": 1794024709.5833485,
+      "exit": 0,
+      "threads": 6
+    },
+    {
+      "id": "manual-1794024731720877877",
+      "queue": "test",
+      "start": 1794024731.7210102,
+      "end": 1794024731.7850766,
+      "exit": 0,
+      "threads": 6
+    },
+    {
+      "id": "manual-1794024731837583420",
+      "queue": "test",
+      "start": 1794024731.8377078,
+      "end": 1794024731.8697612,
+      "exit": 1,
+      "threads": 6
+    },
+    {
+      "id": "manual-1794024731922912034",
+      "queue": "build",
+      "start": 1794024731.923077,
+      "end": 1794024731.9552526,
+      "exit": 0,
+      "threads": 8
+    },
+    {
+      "id": "manual-1794024732009118936",
+      "queue": "build",
+      "start": 1794024732.0093024,
+      "end": 1794024732.0414047,
+      "exit": 0,
+      "threads": 8
+    },
+    {
+      "id": "manual-1794024734052703544",
+      "queue": "test",
+      "start": 1794024734.052808,
+      "end": 1794024734.1672885,
+      "exit": 1,
+      "threads": 6
+    },
+    {
+      "id": "manual-1794024778431872881",
+      "queue": "test",
+      "start": 1794024778.432005,
+      "end": 1794024778.5467284,
+      "exit": 0,
+      "threads": 6
+    },
+    {
+      "id": "manual-1794024778632885583",
+      "queue": "test",
+      "start": 1794024778.6330044,
+      "end": 1794024778.6493049,
+      "exit": 0,
+      "threads": 6
+    },
+    {
+      "id": "revalidate-dag",
+      "queue": "test",
+      "start": 1794024779.0222354,
+      "end": 1794024779.054579,
+      "exit": 0,
+      "threads": 6
+    },
+    {
+      "id": "revalidate-events",
+      "queue": "test",
+      "start": 1794024779.0553226,
+      "end": 1794024779.1204891,
+      "exit": 0,
+      "threads": 6
+    },
+    {
+      "id": "revalidate-artifacts",
+      "queue": "test",
+      "start": 1794024779.1214788,
+      "end": 1794024779.1870704,
+      "exit": 0,
+      "threads": 6
+    },
+    {
+      "id": "manual-1794024836407730196",
+      "queue": "test",
+      "start": 1794024836.4078577,
+      "end": 1794024836.4404378,
+      "exit": 1,
+      "threads": 6
+    },
+    {
+      "id": "manual-1794024836504267321",
+      "queue": "build",
+      "start": 1794024836.5044026,
+      "end": 1794024836.536319,
+      "exit": 0,
+      "threads": 8
+    },
+    {
+      "id": "revalidate-dag",
+      "queue": "test",
+      "start": 1794024859.6648307,
+      "end": 1794024859.6972976,
+      "exit": 0,
+      "threads": 6
+    },
+    {
+      "id": "revalidate-events",
+      "queue": "test",
+      "start": 1794024859.698286,
+      "end": 1794024859.7314425,
+      "exit": 0,
+      "threads": 6
+    },
+    {
+      "id": "revalidate-artifacts",
+      "queue": "test",
+      "start": 1794024859.7316496,
+      "end": 1794024859.763603,
+      "exit": 0,
+      "threads": 6
+    },
+    {
+      "id": "manual-1794024879441410895",
+      "queue": "test",
+      "start": 1794024879.4415212,
+      "end": 1794024879.4738667,
+      "exit": 0,
+      "threads": 6
+    },
+    {
+      "id": "manual-1794024910781558827",
+      "queue": "test",
+      "start": 1794024910.7816784,
+      "end": 1794024910.8140454,
+      "exit": 0,
+      "threads": 6
+    },
+    {
+      "id": "manual-1794024910865349925",
+      "queue": "build",
+      "start": 1794024910.8654885,
+      "end": 1794024910.897606,
+      "exit": 0,
+      "threads": 8
+    }
+  ],
+  "unavailable": [
+    "paid SOL token consumption",
+    "exact tool subprocess timings outside shared CPU queues",
+    "independent physical throttling confirmation",
+    "per-probe health latency"
+  ],
+  "observed_throttling_masks": [
+    "0x0000000000000000"
+  ],
+  "http_errors": [
+    {
+      "time": 1794024584.1891308,
+      "event": "inference_end",
+      "gpu": 1,
+      "duration_s": 1.197103304992197,
+      "status": 400,
+      "bytes": 201,
+      "usage": {},
+      "timings": {}
+    },
+    {
+      "time": 1794024585.4298291,
+      "event": "inference_end",
+      "gpu": 1,
+      "duration_s": 0.9848155759973451,
+      "status": 400,
+      "bytes": 201,
+      "usage": {},
+      "timings": {}
+    },
+    {
+      "time": 1794024636.8713636,
+      "event": "inference_end",
+      "gpu": 0,
+      "duration_s": 1.0559758040035376,
+      "status": 400,
+      "bytes": 201,
+      "usage": {},
+      "timings": {}
+    },
+    {
+      "time": 1794024637.9775667,
+      "event": "inference_end",
+      "gpu": 0,
+      "duration_s": 0.8585698280076031,
+      "status": 400,
+      "bytes": 201,
+      "usage": {},
+      "timings": {}
+    }
+  ],
+  "reported_tool_seconds_by_task": {
+    "dag": 0.656,
+    "redact": 2.918,
+    "events": 2.044,
+    "artifacts": 1.257
+  },
+  "timed_tool_results_by_task": {
+    "dag": 12,
+    "redact": 41,
+    "events": 26,
+    "artifacts": 13
+  },
+  "disk_sector_deltas": {
+    "nvme1n1": {
+      "read": 0,
+      "written": 0
+    },
+    "nvme0n1": {
+      "read": 15178440,
+      "written": 1401992
+    }
+  },
+  "peak_worker_lifecycles": 4,
+  "peak_inference_requests_per_gpu": {
+    "0": 1,
+    "1": 1
+  },
+  "cpu_inference_overlap": {
+    "cpu-build": true,
+    "cpu-analysis": true,
+    "cpu-tests": true,
+    "manual-1794024364461942249": true,
+    "recover-dag": false,
+    "recover-events": false,
+    "recover-artifacts": false,
+    "recover-redact": false,
+    "manual-1794024696006253474": false,
+    "manual-1794024696110604873": false,
+    "revalidate-dag": false,
+    "revalidate-artifacts": false,
+    "revalidate-redact": false,
+    "manual-1794024731720877877": true,
+    "manual-1794024731837583420": true,
+    "manual-1794024731922912034": true,
+    "manual-1794024732009118936": true,
+    "manual-1794024734052703544": false,
+    "manual-1794024778431872881": false,
+    "manual-1794024778632885583": false,
+    "revalidate-events": false,
+    "manual-1794024836407730196": false,
+    "manual-1794024836504267321": false,
+    "manual-1794024879441410895": false,
+    "manual-1794024910781558827": false,
+    "manual-1794024910865349925": false
+  },
+  "three_cpu_queues_simultaneous": true
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "task": "artifacts",
+    "command": [
+      "-m",
+      "unittest",
+      "discover"
+    ],
+    "exit": 0,
+    "summary": "....................\n----------------------------------------------------------------------\nRan 20 tests in 0.005s\n\nOK\n"
+  },
+  {
+    "task": "artifacts",
+    "command": [
+      "acceptance.py"
+    ],
+    "exit": 0,
+    "summary": ""
+  },
+  {
+    "task": "artifacts",
+    "command": [
+      "-m",
+      "compileall",
+      "-q",
+      "."
+    ],
+    "exit": 0,
+    "summary": ""
+  },
+  {
+    "task": "dag",
+    "unit_suite": "not supplied; external acceptance script is the independent test gate"
+  },
+  {
+    "task": "dag",
+    "command": [
+      "acceptance.py"
+    ],
+    "exit": 0,
+    "summary": ""
+  },
+  {
+    "task": "dag",
+    "command": [
+      "-m",
+      "compileall",
+      "-q",
+      "."
+    ],
+    "exit": 0,
+    "summary": ""
+  },
+  {
+    "task": "events",
+    "command": [
+      "-m",
+      "unittest",
+      "discover"
+    ],
+    "exit": 0,
+    "summary": "................s.......\n----------------------------------------------------------------------\nRan 24 tests in 0.048s\n\nOK (skipped=1)\n"
+  },
+  {
+    "task": "events",
+    "command": [
+      "acceptance.py"
+    ],
+    "exit": 0,
+    "summary": ""
+  },
+  {
+    "task": "events",
+    "command": [
+      "-m",
+      "compileall",
+      "-q",
+      "."
+    ],
+    "exit": 0,
+    "summary": ""
+  },
+  {
+    "task": "redact",
+    "command": [
+      "-m",
+      "unittest",
+      "discover"
+    ],
+    "exit": 0,
+    "summary": "...........\n----------------------------------------------------------------------\nRan 11 tests in 0.000s\n\nOK\n"
+  },
+  {
+    "task": "redact",
+    "command": [
+      "acceptance.py"
+    ],
+    "exit": 0,
+    "summary": ""
+  },
+  {
+    "task": "redact",
+    "command": [
+      "-m",
+      "compileall",
+      "-q",
+      "."
+    ],
+    "exit": 0,
+    "summary": ""
+  }
+]

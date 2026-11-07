@@ -210,6 +210,23 @@ class ContinueWorkerTests(unittest.TestCase):
         with self.assertRaises(SystemExit):
             cw.bind_checkpoint(args, "hash")
 
+    def test_large_bundle_continuation_preserves_reference_without_reinjection(self):
+        args = self.args()
+        context = cw.continuation_context(args, 'TASK: implement events\nREFERENCE SOURCE\n' + 'source text\n' * 10000)
+        self.assertLess(len(context), 2000)
+        self.assertIn('TASK: implement events', context)
+        self.assertIn(self.prompt, context)
+        self.assertIn(cw.sha256_file(self.prompt), context)
+
+    def test_external_acceptance_imports_workspace_module(self):
+        args = self.args()
+        module = os.path.join(self.work, 'product.py')
+        with open(module, 'w') as f:
+            f.write('value = 42\n')
+        with open(self.verify, 'w') as f:
+            f.write('import product; assert product.value == 42\n')
+        self.assertEqual(cw.run_verify(args)[0], 0)
+
     def test_build_command_uses_explicit_resume_and_model_binding(self):
         args = self.args(port="8083")
         cmd = cw.build_command(args, self.prompt, resume_id="sess-abc")

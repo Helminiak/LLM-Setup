@@ -1,0 +1,83 @@
+{
+  "dag": {
+    "status": "approved",
+    "worker": "w1",
+    "session_id_preserved": true,
+    "slices_used": 2,
+    "review_history": [
+      {
+        "disposition": "APPROVED",
+        "feedback": ""
+      }
+    ],
+    "source_sha256": {
+      "acceptance.py": "b780574976413aca538487ae2f740b6ca15814da54948d90104f19613bac1ab2",
+      "dag.py": "e747d60dd0ab737eb78fd217ab1e61c42f0293fd278b178e432a8570cfec9bab"
+    },
+    "original_worker_source_sha256": "f33118af25ab5c53535ed63903456f6863c0f751fa15c7889b94787bd166012b",
+    "packaging_normalization": "Removed trailing blank lines from public copy only; worker source retained unchanged."
+  },
+  "events": {
+    "status": "approved",
+    "worker": "w2",
+    "session_id_preserved": true,
+    "slices_used": 3,
+    "review_history": [
+      {
+        "disposition": "DISAPPROVED \u2014 REWORK REQUIRED",
+        "feedback": "DISAPPROVED \u2014 REWORK REQUIRED. Your event summarizer skips blank/whitespace-only records, violating the objective that invalid JSON records count as invalid. Reproducer: summarize(['\\n']) must return {'tools':{},'invalid':1}. Fix that behavior and add regression tests for blank and whitespace-only records. Preserve unrelated valid-event handling and existing tests. Run python3 -m unittest and py_compile through the shared CPU test/build queues, using sol-engineering cpu test --cwd CURRENT_WORKSPACE -- python3 -m unittest discover. Do not repeat the original source bundle. Original objective and all source context remain in the original prompt file referenced by the checkpoint. Submit compact test evidence for SOL re-review.\n"
+      },
+      {
+        "disposition": "APPROVED",
+        "feedback": ""
+      }
+    ],
+    "source_sha256": {
+      "acceptance.py": "62d627c7447c3d1f497ba89d395c655543b0b8bc6739125bcc659febde5b66d9",
+      "events.py": "14d8ca0e5ed45d98e7e892ee9f5511f23f5076d3b3a6fc62b3a8330c9d063a72",
+      "test_events.py": "6f2473e7c351196d2c0dc80fda31cc3b02eac61839b35a6f4c3cc1159fdbb1d7"
+    }
+  },
+  "artifacts": {
+    "status": "approved",
+    "worker": "w3",
+    "session_id_preserved": true,
+    "slices_used": 2,
+    "review_history": [
+      {
+        "disposition": "APPROVED",
+        "feedback": ""
+      }
+    ],
+    "source_sha256": {
+      "test_artifacts.py": "3b39a69d2dc2f4216dc2c6d788680532a5bc03b551af22a9ad542180f30b6fae",
+      "acceptance.py": "5d57b9e61a56e75d290cea5ff4e6b05842ac8102bade76239d6b9c43d0f8b418",
+      "artifacts.py": "fa8a606a6ede6dfc2244c0a0f65104928a5957befc66f1e74aa87fcf54c70dc3"
+    }
+  },
+  "redact": {
+    "status": "approved",
+    "worker": "w4",
+    "session_id_preserved": true,
+    "slices_used": 4,
+    "review_history": [
+      {
+        "disposition": "APPROVED WITH CHANGES",
+        "feedback": "APPROVED WITH CHANGES. The implementation satisfies the external acceptance script, but your full test suite has six failures and cannot be accepted yet. Reconcile test expectations with the original task: each match of case-insensitive Bearer followed by whitespace and a maximal non-whitespace credential becomes exactly \"Bearer [REDACTED]\". Adjacent unmatched text remains unchanged. Do not preserve original bearer casing/whitespace in the replacement. Keep recursive sensitive-key redaction and non-mutation checks. Fix genuine code defects if identified, otherwise correct erroneous expectations, then run the full unittest suite via sol-engineering cpu test --cwd <private-workspaces>/redact -- python3 -m unittest discover. Run py_compile through CPU build queue, and show compact evidence. Use the existing source and checkpoint; do not reload the original 50K reference bundle.\n"
+      },
+      {
+        "disposition": "DISAPPROVED \u2014 REWORK REQUIRED",
+        "feedback": "DISAPPROVED \u2014 REWORK REQUIRED. One actual suite failure remains: test_tuple_and_opaque_objects_preserved asserts identity between two independently constructed dictionaries. Replace that assertion with checks that the returned dict is a new dict and returned['obj'] is the sentinel. Do not change the implementation to preserve dict identity; the task requires copying dict/list structures.\nAlso remove the added preceding-whitespace guard (?<!\\S) from BEARER_RE: the specified matching rule is case-insensitive Bearer followed by whitespace and a maximal non-whitespace credential. Use re.compile(r'Bearer\\s+\\S+', re.IGNORECASE). Update the aBearer bBearer c expected result to aBearer [REDACTED] c, preserving the unmatched leading a. This is a specification clarification, not permission to invent token boundaries.\nMake these small exact changes with one file edit operation, then run the FULL unittest suite through the shared CPU test queue and py_compile through build queue. All 11 tests and original external acceptance must pass. No source searches needed, no original source bundle reinjection, no model/service restarts. Report actual results.\n"
+      },
+      {
+        "disposition": "APPROVED",
+        "feedback": ""
+      }
+    ],
+    "source_sha256": {
+      "test_redact.py": "88e189cdbb7481aea7b5c4f225a2307136babddfce7064a9f80d007f623ad765",
+      "redact.py": "52a0775cd0363a96428ce32e7d74f7aab6daecdf2769f937804ab1fda9160306",
+      "acceptance.py": "8326219ff797e2ae861249b2a697f487116e1f177facf5834311364abadb5fca"
+    }
+  }
+}
