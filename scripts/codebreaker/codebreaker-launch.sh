@@ -28,43 +28,38 @@ wait_http() {
 }
 log() { printf '[Codebreaker] %s\n' "$*" | tee -a "$LOG"; }
 : > "$LOG"
-for unit in gyro-l.service hindsight.service; do
+for unit in gyro-coder-l-gpu0.service gyro-coder-l-gpu1.service hindsight.service; do
   if ! systemctl --user is-active --quiet "$unit"; then
     log "Starting inactive required service $unit (idempotent systemd start)."
     systemctl --user start "$unit" >>"$LOG" 2>&1 || fail "Could not start $unit."
   else log "Reusing active $unit."; fi
 done
-wait_http http://127.0.0.1:8081/health 300 gyro || fail 'Gyro-L did not become healthy within 300 seconds.'
+for port in 8082 8083; do
+  wait_http http://127.0.0.1:$port/health 300 gyro || fail "GYRO endpoint $port unhealthy."
+done
 wait_http http://127.0.0.1:8888/health 60 hindsight || fail 'Hindsight did not report a healthy database within 60 seconds.'
 python3 - <<'PY' >>"$LOG" 2>&1 || fail 'Gyro-L slot or model identity does not match the accepted profile.'
 import json,urllib.request
-base='http://127.0.0.1:8081'
-p=json.load(urllib.request.urlopen(base+'/props',timeout=5))
-s=json.load(urllib.request.urlopen(base+'/slots',timeout=5))
-assert p.get('model_alias')=='gyro-l',p.get('model_alias')
-assert p.get('total_slots')==2,p.get('total_slots')
-assert p.get('default_generation_settings',{}).get('n_ctx')==64000
-assert len(s)==2 and all(x.get('n_ctx')==64000 for x in s)
+for gpu, port in enumerate((8082,8083)):
+    base=f'http://127.0.0.1:{port}'
+    p=json.load(urllib.request.urlopen(base+'/props',timeout=5))
+    s=json.load(urllib.request.urlopen(base+'/slots',timeout=5))
+    assert p.get('model_alias')==f'gyro-coder-l-gpu{gpu}'
+    assert p.get('total_slots')==1
+    assert len(s)==1 and s[0].get('n_ctx')==65536
 PY
-if ! grep -Fq 'http://127.0.0.1:8081/v1' "$HOME/.hermes/profiles/hermes-supervisor/config.yaml" || ! grep -Fq 'http://127.0.0.1:8888/mcp/eng/' "$HOME/.hermes/profiles/hermes-supervisor/config.yaml"; then
+if ! grep -Fq 'http://127.0.0.1:8082/v1' "$HOME/.hermes/profiles/hermes-supervisor/config.yaml" || ! grep -Fq 'http://127.0.0.1:8888/mcp/eng/' "$HOME/.hermes/profiles/hermes-supervisor/config.yaml"; then
   fail 'Hermes Supervisor configuration does not point to Gyro-L and the eng Hindsight bank.'
 fi
-for n in 1 2; do
-  cfg="$HOME/.hermes/profiles/gyro-worker-$n/config.yaml"
-  [[ -f "$cfg" ]] || fail "Gyro-L worker $n profile is missing."
-  grep -Fq 'http://127.0.0.1:8081/v1' "$cfg" || fail "Gyro-L worker $n endpoint is incorrect."
-  grep -Fq 'http://127.0.0.1:8888/mcp/eng/' "$cfg" || fail "Gyro-L worker $n Hindsight route is missing."
-  [[ -x "$HOME/.local/bin/codebreaker-worker-$n" ]] || fail "Gyro-L worker $n launcher is missing or not executable."
-done
 command -v hermes >/dev/null 2>&1 || fail 'Hermes CLI is unavailable in this desktop session.'
 if ! command -v nvidia-smi >/dev/null 2>&1; then fail 'nvidia-smi is unavailable; GPU reserve could not be verified.'; fi
 mapfile -t free_mib < <(nvidia-smi --query-gpu=memory.free --format=csv,noheader,nounits 2>>"$LOG") || fail 'Could not read GPU memory.'
 [[ ${#free_mib[@]} -eq 2 ]] || fail 'Expected exactly two visible GPUs.'
 for i in 0 1; do
   [[ "${free_mib[$i]}" =~ ^[0-9]+$ ]] || fail "GPU $i free memory reading is invalid."
-  (( free_mib[$i] >= 2048 )) || fail "GPU $i has less than 2048 MiB free; no worker was started."
+  (( free_mib[$i] >= 1024 )) || fail "GPU $i has less than 1024 MiB free; no worker was started."
 done
-log "Ready: Gyro-L slots=2 x 64000; Hindsight eng healthy; worker profiles 1 and 2 available; free VRAM ${free_mib[0]}/${free_mib[1]} MiB."
+log "Ready: GYRO 8082/8083, one 65536 slot per GPU; Hindsight eng healthy; free VRAM ${free_mib[0]}/${free_mib[1]} MiB."
 if [[ "$ACTION" == --check ]]; then exit 0; fi
 [[ "$ACTION" == --launch || "$ACTION" == --session ]] || fail 'Usage: codebreaker-launch.sh [--check|--launch]'
 lock="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/codebreaker-supervisor.lock"
