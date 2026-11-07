@@ -1,0 +1,218 @@
+[
+  {
+    "round": 1,
+    "config": "A-baseline",
+    "settings": {
+      "CACHE_TYPE_K": "q8_0",
+      "CACHE_TYPE_V": "q8_0",
+      "BATCH_SIZE": 2048,
+      "UBATCH_SIZE": 512
+    },
+    "ready": true,
+    "wall_s": 42.04041043500183,
+    "workers": [
+      {
+        "worker": "gpu0",
+        "wall_s": 32.321694530997775,
+        "prompt_tokens": 94,
+        "generated_tokens": 3252,
+        "prompt_tps": 276.18709031024036,
+        "generation_tps": 101.74157414838922,
+        "finish_reason": "stop",
+        "compile": false,
+        "tests": false
+      },
+      {
+        "worker": "gpu1",
+        "wall_s": 42.018035695000435,
+        "prompt_tokens": 94,
+        "generated_tokens": 4096,
+        "prompt_tps": 276.2382231417102,
+        "generation_tps": 98.32186308957883,
+        "finish_reason": "length",
+        "compile": false,
+        "tests": false
+      }
+    ]
+  },
+  {
+    "round": 1,
+    "config": "B-small-batch",
+    "settings": {
+      "CACHE_TYPE_K": "q8_0",
+      "CACHE_TYPE_V": "q8_0",
+      "BATCH_SIZE": 1024,
+      "UBATCH_SIZE": 256
+    },
+    "ready": true,
+    "wall_s": 35.66559143800259,
+    "workers": [
+      {
+        "worker": "gpu0",
+        "wall_s": 34.05930217299465,
+        "prompt_tokens": 94,
+        "generated_tokens": 3212,
+        "prompt_tps": 292.2367615192581,
+        "generation_tps": 95.23081074695862,
+        "finish_reason": "stop",
+        "compile": false,
+        "tests": false
+      },
+      {
+        "worker": "gpu1",
+        "wall_s": 35.663862989000336,
+        "prompt_tokens": 94,
+        "generated_tokens": 3364,
+        "prompt_tps": 289.4507518021389,
+        "generation_tps": 95.22973501044895,
+        "finish_reason": "stop",
+        "compile": false,
+        "tests": false
+      }
+    ]
+  },
+  {
+    "round": 2,
+    "config": "C-large-batch",
+    "settings": {
+      "CACHE_TYPE_K": "q8_0",
+      "CACHE_TYPE_V": "q8_0",
+      "BATCH_SIZE": 4096,
+      "UBATCH_SIZE": 512
+    },
+    "ready": true,
+    "wall_s": 32.625774307998654,
+    "workers": [
+      {
+        "worker": "gpu0",
+        "wall_s": 32.624563880002825,
+        "prompt_tokens": 94,
+        "generated_tokens": 3301,
+        "prompt_tps": 285.82461922991547,
+        "generation_tps": 102.27448537958338,
+        "finish_reason": "stop",
+        "compile": false,
+        "tests": false
+      },
+      {
+        "worker": "gpu1",
+        "wall_s": 32.380775228004495,
+        "prompt_tokens": 94,
+        "generated_tokens": 3299,
+        "prompt_tps": 284.43562223318276,
+        "generation_tps": 102.98058538061629,
+        "finish_reason": "stop",
+        "compile": false,
+        "tests": false
+      }
+    ]
+  },
+  {
+    "round": 2,
+    "config": "D-q4-kv",
+    "settings": {
+      "CACHE_TYPE_K": "q4_0",
+      "CACHE_TYPE_V": "q4_0",
+      "BATCH_SIZE": 2048,
+      "UBATCH_SIZE": 512
+    },
+    "ready": true,
+    "wall_s": 42.061183566002,
+    "workers": [
+      {
+        "worker": "gpu0",
+        "wall_s": 30.798348153002735,
+        "prompt_tokens": 94,
+        "generated_tokens": 3051,
+        "prompt_tps": 266.14193292657035,
+        "generation_tps": 100.27120237039807,
+        "finish_reason": "stop",
+        "compile": false,
+        "tests": false
+      },
+      {
+        "worker": "gpu1",
+        "wall_s": 42.058437460997084,
+        "prompt_tokens": 94,
+        "generated_tokens": 4096,
+        "prompt_tps": 264.1206188289903,
+        "generation_tps": 98.25306765511891,
+        "finish_reason": "length",
+        "compile": false,
+        "tests": false
+      }
+    ]
+  },
+  {
+    "round": 3,
+    "config": "E-q4-small-batch",
+    "settings": {
+      "CACHE_TYPE_K": "q4_0",
+      "CACHE_TYPE_V": "q4_0",
+      "BATCH_SIZE": 1024,
+      "UBATCH_SIZE": 256
+    },
+    "ready": true,
+    "wall_s": 41.93258471700392,
+    "workers": [
+      {
+        "worker": "gpu0",
+        "wall_s": 41.62617813300312,
+        "prompt_tokens": 94,
+        "generated_tokens": 4096,
+        "prompt_tps": 257.1833498404916,
+        "generation_tps": 99.31184530575825,
+        "finish_reason": "length",
+        "compile": false,
+        "tests": false
+      },
+      {
+        "worker": "gpu1",
+        "wall_s": 41.93023797500064,
+        "prompt_tokens": 94,
+        "generated_tokens": 4096,
+        "prompt_tps": 257.84295169833473,
+        "generation_tps": 98.57673727176325,
+        "finish_reason": "length",
+        "compile": false,
+        "tests": false
+      }
+    ]
+  },
+  {
+    "round": 3,
+    "config": "F-large-ubatch",
+    "settings": {
+      "CACHE_TYPE_K": "q8_0",
+      "CACHE_TYPE_V": "q8_0",
+      "BATCH_SIZE": 2048,
+      "UBATCH_SIZE": 1024
+    },
+    "ready": true,
+    "wall_s": 33.17272299599426,
+    "workers": [
+      {
+        "worker": "gpu0",
+        "wall_s": 33.171502776000125,
+        "prompt_tokens": 94,
+        "generated_tokens": 3232,
+        "prompt_tps": 293.92819396759285,
+        "generation_tps": 98.45052404107865,
+        "finish_reason": "stop",
+        "compile": false,
+        "tests": false
+      },
+      {
+        "worker": "gpu1",
+        "wall_s": 32.65928708999854,
+        "prompt_tokens": 94,
+        "generated_tokens": 3199,
+        "prompt_tps": 289.10800952211065,
+        "generation_tps": 98.98498297523292,
+        "finish_reason": "stop",
+        "compile": false,
+        "tests": false
+      }
+    ]
+  }
+]

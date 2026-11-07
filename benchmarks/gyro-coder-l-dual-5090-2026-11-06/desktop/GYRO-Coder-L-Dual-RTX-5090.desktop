@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=GYRO CODER-L
+Comment=Start or reuse dual RTX 5090 coding models and Hindsight, then open Hermes Supervisor
+Exec=/home/joe/.local/bin/gyro-coder-launch --launch
+TryExec=/home/joe/.local/bin/gyro-coder-launch
+Icon=/home/joe/.local/share/icons/gyro-coder.png
+Terminal=false
+Categories=Development;
+StartupNotify=true

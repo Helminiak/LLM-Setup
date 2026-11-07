@@ -1,0 +1,7 @@
+profile: gyro-coder-supervisor
+gpu0_endpoint: http://127.0.0.1:8082/v1
+gpu1_profile: gyro-coder-gpu1
+gpu1_endpoint: http://127.0.0.1:8083/v1
+hindsight_mcp: http://127.0.0.1:8888/mcp/eng/
+launcher: /home/joe/.local/bin/gyro-coder-launch
+interactive_command: HERMES_HOME=~/.hermes/profiles/gyro-coder-supervisor hermes chat --tui
