@@ -1,0 +1,19 @@
+
+running 6 tests
+test tests::empty_behaviour_on_new_and_reads_yield_nothing ... ok
+test tests::drain_and_clear_empty_the_buffer_and_reset_cursors ... ok
+test tests::explicit_overwrite_evicts_the_oldest_value ... ok
+test tests::wraparound_preserves_fifo_order_across_many_cycles ... ok
+test tests::full_behaviour_is_reported_only_at_capacity ... ok
+test tests::overflow_hands_back_the_value_without_mutating_contents ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s
+     Running unittests src/lib.rs (dual-5090-optimization/results/hermes-turn12-20261106/short-agent-2/target/debug/deps/ring_buffer-106c7abbe70fe1f3)
+   Doc-tests ring_buffer

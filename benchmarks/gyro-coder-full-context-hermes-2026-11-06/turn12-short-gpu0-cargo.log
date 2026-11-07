@@ -1,0 +1,20 @@
+
+running 6 tests
+test tests::push_pop_preserve_fifo_order ... ok
+test tests::wraparound_preserves_order_and_reuses_slots ... ok
+test tests::full_buffer_rejects_push_and_returns_the_value ... ok
+test tests::push_overwriting_evicts_oldest_and_wraps_head ... ok
+test tests::clear_and_remove_track_state ... ok
+test tests::empty_and_zero_capacity_boundaries ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 1 test
+test src/lib.rs - (line 18) ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.14s
+
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s
+     Running unittests src/lib.rs (dual-5090-optimization/results/hermes-turn12-20261106/short-agent-1/target/debug/deps/bounded_ring_buffer-3a577c4b2ce5f630)
+   Doc-tests bounded_ring_buffer
