@@ -2,6 +2,7 @@
 set -Eeuo pipefail
 repo="$(cd -- "$(dirname -- "$0")/../.." && pwd)"
 provider=openai-compatible
+
 profile_root="$HOME/.hermes/profiles"
 workers="$HOME/.local/bin"
 launcher="$workers/codebreaker-launch"
@@ -12,23 +13,25 @@ for target in "${conflicts[@]}"; do
 done
 command -v hermes >/dev/null || { echo 'Hermes CLI is required' >&2; exit 2; }
 
-# Provision only the two new isolated profiles; never edit hermes-supervisor or existing workers.
+# Provision worker profiles; existing worker configurations must already match.
 for n in 1 2; do
+  port=$((8081+n))
+  model="gyro-coder-l-gpu$((n-1))"
   dir="$profile_root/gyro-worker-$n"
   if [[ -f "$dir/config.yaml" ]]; then
-    grep -Fq 'http://127.0.0.1:8081/v1' "$dir/config.yaml" && grep -Fq 'http://127.0.0.1:8888/mcp/eng/' "$dir/config.yaml" || { echo "Existing $dir/config.yaml has unexpected routes; refusing to modify it" >&2; exit 2; }
+    grep -Fq "http://127.0.0.1:$port/v1" "$dir/config.yaml" && grep -Fq 'http://127.0.0.1:8888/mcp/eng/' "$dir/config.yaml" || { echo "Existing $dir/config.yaml has unexpected routes; refusing to modify it" >&2; exit 2; }
     continue
   fi
   mkdir -p "$dir"
-  HERMES_HOME="$dir" hermes config set model.default 'Gyro-L Abliterated' >/dev/null
+  HERMES_HOME="$dir" hermes config set model.default "$model" >/dev/null
   HERMES_HOME="$dir" hermes config set model.provider "$provider" >/dev/null
   HERMES_HOME="$dir" hermes config set model.openai_runtime auto >/dev/null
-  HERMES_HOME="$dir" hermes config set model.base_url http://127.0.0.1:8081/v1 >/dev/null
+  HERMES_HOME="$dir" hermes config set model.base_url "http://127.0.0.1:$port/v1" >/dev/null
   HERMES_HOME="$dir" hermes config set model.api_mode chat_completions >/dev/null
-  HERMES_HOME="$dir" hermes config set "providers.$provider.name" 'Gyro-L Abliterated' >/dev/null
-  HERMES_HOME="$dir" hermes config set "providers.$provider.base_url" http://127.0.0.1:8081/v1 >/dev/null
-  HERMES_HOME="$dir" hermes config set "providers.$provider.model" 'Gyro-L Abliterated' >/dev/null
-  HERMES_HOME="$dir" hermes config set "providers.$provider.context_length" 64000 >/dev/null
+  HERMES_HOME="$dir" hermes config set "providers.$provider.name" "$model" >/dev/null
+  HERMES_HOME="$dir" hermes config set "providers.$provider.base_url" "http://127.0.0.1:$port/v1" >/dev/null
+  HERMES_HOME="$dir" hermes config set "providers.$provider.model" "$model" >/dev/null
+  HERMES_HOME="$dir" hermes config set "providers.$provider.context_length" 65536 >/dev/null
   HERMES_HOME="$dir" hermes config set "providers.$provider.api_mode" chat_completions >/dev/null
   HERMES_HOME="$dir" hermes config set mcp_servers.hindsight_eng.url http://127.0.0.1:8888/mcp/eng/ >/dev/null
 done

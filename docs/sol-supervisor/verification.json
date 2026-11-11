@@ -1,0 +1,58 @@
+{
+  "workers": [
+    {
+      "worker": 0,
+      "port": 8082,
+      "exit": 0,
+      "test_exit": 0,
+      "elapsed_s": 25.29
+    },
+    {
+      "worker": 1,
+      "port": 8083,
+      "exit": 0,
+      "test_exit": 0,
+      "elapsed_s": 103.5
+    },
+    {
+      "worker": 2,
+      "port": 8082,
+      "exit": 0,
+      "test_exit": 0,
+      "elapsed_s": 26.73
+    },
+    {
+      "worker": 3,
+      "port": 8083,
+      "exit": 0,
+      "test_exit": 0,
+      "elapsed_s": 92.36
+    }
+  ],
+  "wall_s": 106.06,
+  "min_free_mib": [
+    2068,
+    2084
+  ],
+  "pass": true,
+  "scope": "four processes; queued inference, one slot per GPU; production Kanban unchanged",
+  "hindsight_recall": "PASS through existing hermes-supervisor; memory content withheld",
+  "supervisor_backup": "private ~/.local/state/sol-restoration/backup-20261107T034226502491Z",
+  "kanban_max_in_progress": 1,
+  "hermes_version": "0.23.0+508.g8153953",
+  "codex_version": "0.162.1",
+  "gpu_runtime_reloaded": false,
+  "continuation": {
+    "initial": "PARTIAL after slice 1",
+    "restart": "VERIFIED after slice 2, same explicit session",
+    "verified_restart": "acceptance rerun; no additional slice",
+    "review_state": "pending",
+    "tests_passed": 10
+  },
+  "unverified": [
+    "four simultaneous inference slots",
+    "four near-full-context workers",
+    "interactive GUI appearance",
+    "live SOL approval/rejection lifecycle; configuration preserved"
+  ]
+}
