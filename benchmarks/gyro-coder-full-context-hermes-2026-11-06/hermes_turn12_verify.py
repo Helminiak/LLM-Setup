@@ -3,6 +3,7 @@
 import json, os, signal, subprocess, sys, time
 from pathlib import Path
 from urllib.request import urlopen
+from hermes_telemetry import analyze_file, digest
 
 ROOT=Path('/home/joe/dual-5090-optimization/results/hermes-turn12-20261106'); ROOT.mkdir(parents=True,exist_ok=True)
 mode=sys.argv[1] if len(sys.argv)>1 else 'short'; assert mode in ('short','long')
@@ -68,8 +69,10 @@ for child in children:
         run=subprocess.run(['cargo','test','--manifest-path',str(cargo)],capture_output=True,text=True,timeout=30)
         compiler_log=work/'cargo-test.log'; compiler_log.write_text(run.stdout+run.stderr)
         test={'exit':run.returncode,'log':str(compiler_log),'summary':(run.stdout+run.stderr)[-1000:]}
+    telemetry=analyze_file(work/'hermes.jsonl', verifications=[{'command':'cargo test','output':compiler_log.read_text(),
+        'exit_code':run.returncode}] if test else ())
     rows.append({'port':child['port'],'exit':child['proc'].returncode,'elapsed_s':round(child['exit_at']-child['start'],3),
-                 'events':events(work/'hermes.jsonl'),'cargo':test})
+                 'events':events(work/'hermes.jsonl'),'cargo':test,'telemetry':digest(telemetry)})
 summary={'mode':mode,'deadline_s':deadline,'reason':reason,'wall_s':round(time.monotonic()-start,3),'agents':rows}
 (ROOT/f'{mode}-summary.json').write_text(json.dumps(summary,indent=2))
 print(json.dumps({'mode':mode,'reason':reason,'agents':[{'port':row['port'],'exit':row['exit'],'elapsed_s':row['elapsed_s'],
