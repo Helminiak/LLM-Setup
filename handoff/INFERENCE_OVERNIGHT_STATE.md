@@ -4,7 +4,7 @@
 **Runbook:** ../docs/inference-research-overnight/RUNBOOK.md
 **Date:** 2026-11-11, America/New_York
 **Supervisor:** HERDR/Hermes on 5090FE (not yet assigned live)
-**Active phase:** P0 — preflight (issue link pending)
+**Active phase:** P0 — preflight (https://github.com/Helminiak/LLM-Setup/issues/20)
 **GPU lease:** NONE (do not infer idle)
 **Last live verification:** NONE for this project
 
@@ -18,13 +18,13 @@
 ## Tracking
 | Phase | Issue | Owner | Status | Commit/evidence | Next action |
 |---|---|---|---|---|---|
-| P0 | pending | local Qwen + HERDR | READY | none | validate live baseline, GPU and dependencies |
-| P1 | pending | Mac Codex low | READY | none | external stack audit |
-| P2 | pending | Mac Codex low | READY | none | public adapter catalog |
-| P3 | pending | local Qwen | READY | none | MTP/engine compatibility plan |
-| P4 | pending | local Qwen GPU lease | WAIT P0 | none | isolated model load + benchmark |
-| P5 | pending | local Qwen + Claude if needed | WAIT P2/P4 | none | LoRA or draft head PoC |
-| P6 | pending | HERDR + Claude low review | WAIT | none | 08:00 handoff report |
+| P0 | [#20](https://github.com/Helminiak/LLM-Setup/issues/20) | local Qwen + HERDR | READY | none | validate live baseline, GPU and dependencies |
+| P1 | [#21](https://github.com/Helminiak/LLM-Setup/issues/21) | Mac Codex low | READY | none | external stack audit |
+| P2 | [#22](https://github.com/Helminiak/LLM-Setup/issues/22) | Mac Codex low | READY | none | public adapter catalog |
+| P3 | [#23](https://github.com/Helminiak/LLM-Setup/issues/23) | local Qwen | READY | none | MTP/engine compatibility plan |
+| P4 | [#24](https://github.com/Helminiak/LLM-Setup/issues/24) | local Qwen GPU lease | WAIT P0 | none | isolated model load + benchmark |
+| P5 | [#25](https://github.com/Helminiak/LLM-Setup/issues/25) | local Qwen + Claude if needed | WAIT P2/P4 | none | LoRA or draft head PoC |
+| P6 | [#26](https://github.com/Helminiak/LLM-Setup/issues/26) | HERDR + Claude low review | WAIT | none | 08:00 handoff report |
 
 ## Safety state
 Actual live services, GPU allocations and running tasks must be recorded by P0 before any GPU test.
