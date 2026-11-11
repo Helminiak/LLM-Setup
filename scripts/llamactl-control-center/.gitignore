@@ -4,3 +4,5 @@
 manifest-*.json
 llamactl-p2-manifest*.json
 references.txt
+__pycache__/
+*.pyc
