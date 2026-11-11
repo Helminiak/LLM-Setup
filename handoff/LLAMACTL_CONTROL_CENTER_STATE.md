@@ -4,7 +4,7 @@
 **Active phase:** P0 — audit/recovery
 **Execution owner:** Local worker on 5090FE
 **Last updated:** 2026-11-10
-**Master issue:** To be linked from issue list
+**Master issue:** https://github.com/Helminiak/LLM-Setup/issues/10
 **Runbook:** [README](../docs/llamactl-control-center/README.md)
 
 ## Prior observations (UNVERIFIED until locally rechecked)
@@ -18,7 +18,7 @@
 None yet.
 
 ## Phase checkpoint
-- Current issue: P0 (link pending)
+- Current issue: https://github.com/Helminiak/LLM-Setup/issues/11
 - Goal: Establish read-only baseline and previous work inventory.
 - Done: None.
 - Acceptance: UNVERIFIED.
