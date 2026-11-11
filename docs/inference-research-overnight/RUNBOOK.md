@@ -52,3 +52,16 @@ P0 revalidate baseline and resource/permissions → P1/P2/P3 research may run co
 
 ## Escalation packet
 One exact failing command and bounded redacted error; expected/observed; environment versions; two attempted fixes; git/issue refs; 1 question requiring a decision. Claude is not to be asked to rerun all prior phases.
+
+## STRICT CLOUD TOKEN & CREDIT POLICY — 2026-11-11
+The host reports that Hermes provider was switched from exhausted local `openai-codex` to authenticated Nous Research. This is a **reported runtime state**, not a continuing health guarantee. The active Nous provider's authenticated-credit expiry was reported as 2026-11-11 08:55:12 UTC; verify actual current entitlement and spend before every cloud-dependent stage. The MacBook Air Codex is a separately authenticated account and must run on the Mac; do not silently switch to exhausted 5090FE Codex.
+
+**Budget objective:** $2.50 Nous spend target, $5.00 absolute overnight stop, and at least $20 of the reported $25 balance preserved, subject to verification of true starting balance and provider-side usage. These are project policy limits, not proven provider enforcement. Require actual provider billing/usage endpoints to meter spend; if unavailable, set a low max-token per call and conservative call-count ceiling, with pause/escalation when exposure cannot be bounded. Do not assume token count is equivalent to cost.
+
+**Agent utilization:** Local Qwen for all routine inspection, parsing, benchmarking and coding; Mac Codex sessions at lowest supported reasoning effort for independent limited research; Nous Hermes for narrow coordination/decisions only; Claude lowest available tier only to resolve a documented blocker or final evidence review. Do not spend cloud tokens recounting entire logs or generating broad status narrations. Start zero additional expensive cloud workers without necessity.
+
+**Context:** Every call reads active issue + current checkpoint + at most 2 directly relevant files/excerpts. Summaries <=400 words. Prefer tool output filtering to dumping huge logs. Persist source URLs/SHA and exact next command to GitHub; use Hindsight narrowly to retrieve a relevant previous decision, never as a full conversation dump. Use short task packets with deterministic acceptance. Worker status/heartbeats should be scripted locally without LLM calls where possible.
+
+**Quotas:** Cap default cloud request input context to 3,000 tokens and response to 600 tokens when supported, with explicit exception only for a justified review; avoid loops. For Nous, start max 10 supervisor calls or $2.50 billed cost, whichever comes first, and require explicit owner approval to exceed $5.00 cumulative. If the provider exposes neither bounded tokens nor billing and calls cannot be safely estimated, PAUSE cloud supervision rather than claim cap enforced. No paid-cloud polling every 15 minutes; use local heartbeat and event-based escalation.
+
+**End state:** Record number of paid calls, input/output tokens if available, actual billed cost if available, uncertainty if not, cloud-provider identity, and credit/quota blockers in P6 morning report.
