@@ -25,6 +25,7 @@
 ## Phase checkpoint
 - **P0 #11 — PASS.** Evidence: https://github.com/Helminiak/LLM-Setup/issues/11#issuecomment-6784608202
 - **P1 #12 — PASS.** Evidence: https://github.com/Helminiak/LLM-Setup/issues/12#issuecomment-6784762554
+- **P2 #13 — PASS (2026-11-10).** Evidence: https://github.com/Helminiak/LLM-Setup/issues/13#issuecomment-6785509542 · report `docs/llamactl-control-center/P2-INVENTORY-2026-11-10.md` · issue #13 closed · master checklist ticked through P2.
   - `gio launch` exit 0 → new app window appeared (window_id 130212167681); `SIGTERM` to the app instance closed it; relaunch gave `pid 2033606`, `window_id 133274402816`, title `Llamactl Dashboard`, `off_screen=false`, frame `(0,0,1521,1708)`.
   - Service log proves the window loaded the app: `GET / 200`, `/assets/index-DrdvaW8y.css 200`, `/assets/index-BfM6bn_m.js 200 (636213B)`, `/api/v1/auth/whoami 200`.
   - Parked (owner credential): `sudo -n true` → "interactive authentication is required", so `wmctrl 1.07+git20240228…` / `xdotool 1:3.20160805…` are **not installed** (nothing installed/upgraded). Not required for this target.
