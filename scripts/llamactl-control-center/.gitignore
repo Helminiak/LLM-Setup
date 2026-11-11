@@ -1,0 +1,6 @@
+# Generated P2 inventory manifests contain absolute host paths and internal
+# cache layout: they stay outside version control (see
+# docs/llamactl-control-center/p2-inventory-schema.md).
+manifest-*.json
+llamactl-p2-manifest*.json
+references.txt
