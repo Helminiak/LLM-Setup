@@ -1,0 +1,22 @@
+[
+  {
+    "task": "dag",
+    "calibrated_initial_tokens": 49560,
+    "prompt_sha256": "4a8272dfda48a3889facfe7181baf60e0091f84ebca3e3500767dfa47d191dd2"
+  },
+  {
+    "task": "events",
+    "calibrated_initial_tokens": 49610,
+    "prompt_sha256": "28bb29e053a080d5cc2dbff46a62d7240e9a3d68818429c3aea0b4e1307cb3c1"
+  },
+  {
+    "task": "artifacts",
+    "calibrated_initial_tokens": 49604,
+    "prompt_sha256": "a4dddf6e6a4a0cc40bae4fe6871f6493ab6fcbc5caad57a6791e834669992360"
+  },
+  {
+    "task": "redact",
+    "calibrated_initial_tokens": 49640,
+    "prompt_sha256": "a33d41498f7380e60350454cc5351e025523b326cf202814f0c3fba6ba425c2c"
+  }
+]

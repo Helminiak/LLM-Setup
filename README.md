@@ -1,5 +1,9 @@
 # LLM-Setup
 
+## Dedicated parallel engineering default
+
+Start with [the permanent architecture](docs/architecture/parallel-worker-default.md) and [machine-readable defaults](configs/parallel-engineering.json). `sol-engineering` opens the sole Codex SOL supervisor at medium reasoning; four logical GYRO workers share two single-slot GPU services and three CPU queues (8/6/6 threads). Production Kanban remains unchanged. This dedicated workflow is separate from the DR100 default below. Acceptance status and measured limitations are recorded with the architecture.
+
 ## DR100 current default (2026-10-24)
 
 **One dual-GPU llama.cpp GSQ-RCO Coder + MTP model, one `qwen-worker` native Kanban executor.** See [v2 profile](profiles/rtx5090-dr100-qwen-v2.json), [read-only v2 audit](scripts/dr100-single-worker-v2-audit.sh) and the [control-repository authority](https://github.com/Helminiak/dr100-engineering-control/blob/main/policies/DR100_SINGLE_WORKER_V2.md). Legacy LM Studio loaders, routing scripts, Coder390 profiles and old Kanban importer manifests are **historical/rollback-only**; they do not define the current active route. Their dangerous old auto-load or route-apply paths require explicit legacy opt-in and any necessary owner approval. GitHub configuration is not proof of local runtime migration.

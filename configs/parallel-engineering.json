@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "supervisor": {
+    "implementation": "codex",
+    "model_role": "sol",
+    "reasoning": "medium",
+    "profile": "hermes-supervisor"
+  },
+  "state_dir": "~/.local/state/sol-parallel",
+  "workers": {
+    "w1": {
+      "gpu": 0,
+      "port": 8082,
+      "model": "gyro-coder-l-gpu0",
+      "proxy_port": 18082
+    },
+    "w2": {
+      "gpu": 0,
+      "port": 8082,
+      "model": "gyro-coder-l-gpu0",
+      "proxy_port": 18082
+    },
+    "w3": {
+      "gpu": 1,
+      "port": 8083,
+      "model": "gyro-coder-l-gpu1",
+      "proxy_port": 18083
+    },
+    "w4": {
+      "gpu": 1,
+      "port": 8083,
+      "model": "gyro-coder-l-gpu1",
+      "proxy_port": 18083
+    }
+  },
+  "gpus": {
+    "0": {
+      "port": 8082,
+      "proxy_port": 18082,
+      "slots": 1
+    },
+    "1": {
+      "port": 8083,
+      "proxy_port": 18083,
+      "slots": 1
+    }
+  },
+  "cpu_queues": {
+    "build": {
+      "threads": 8
+    },
+    "test": {
+      "threads": 6
+    },
+    "analysis": {
+      "threads": 6
+    }
+  },
+  "queue_limit": 32,
+  "slice_timeout": 600,
+  "task_timeout": 1800,
+  "cpu_timeout": 300,
+  "slices": 4,
+  "turns": 12,
+  "worker_profile": "gyro-coder-supervisor",
+  "worker_toolsets": "terminal,file",
+  "min_vram_free_mib": 1024,
+  "min_ram_available_mib": 8192,
+  "scheduling": {
+    "policy": "fifo_per_gpu_ready_dag",
+    "gpu_lock_scope": "one_http_inference_response",
+    "cpu_affinity": null
+  },
+  "checkpoint": {
+    "enabled": true,
+    "atomic": true,
+    "explicit_session": true,
+    "nonproductive_slice_limit": 2
+  },
+  "review": {
+    "final_reviewer": "sol",
+    "automatic_approval": false,
+    "dispositions": [
+      "APPROVED",
+      "APPROVED WITH CHANGES",
+      "DISAPPROVED \u2014 REWORK REQUIRED"
+    ]
+  },
+  "logging": {
+    "events": "events.jsonl",
+    "telemetry_interval_seconds": 1,
+    "private_raw_payloads": false
+  },
+  "recovery": {
+    "inflight": "require_inspection",
+    "missing_endpoint": "degraded_no_substitution",
+    "start_models": false
+  },
+  "production_kanban": {
+    "preserve_existing_concurrency": true
+  },
+  "context_policy": {
+    "mode": "task_adaptive",
+    "capacity_tokens": 65536,
+    "minimum_generation_and_tool_reserve": 12000,
+    "stress_test_initial_target": [
+      48000,
+      52000
+    ],
+    "routine_policy": "include only relevant source, interfaces, acceptance criteria and checkpoint history; tokenize before dispatch; refuse overflow instead of dropping required context"
+  }
+}

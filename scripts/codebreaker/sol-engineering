@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+repo="$(cd "$(dirname "$(readlink -f "$0")")/../.." && pwd)"
+if [[ ${1:-supervisor} == supervisor ]]; then
+  [[ $# == 0 ]] || shift
+  prompt="You are the sole Codex SOL engineering supervisor. Read $repo/docs/architecture/parallel-worker-default.md and $repo/configs/parallel-engineering.json. Use the dedicated controller for four local GYRO coding workers and the shared build/test/analysis CPU queues. Preserve the existing hermes-supervisor identity and production Kanban max_in_progress. Delegate routine implementation locally. Review every deliverable explicitly; no automatic approval. Check durable state before dispatch. Do not start or reload model services."
+  exec codex --model gpt-6.1-sol -c 'model_reasoning_effort="medium"' "$prompt" "$@"
+fi
+exec python3 "$repo/scripts/codebreaker/parallel_engineering.py" "$@"

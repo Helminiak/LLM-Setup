@@ -42,7 +42,7 @@ DEFAULT_CLI = "hermes"
 PORT_MODELS = {8082: "gyro-coder-l-gpu0", 8083: "gyro-coder-l-gpu1"}
 CHECKPOINT_NAME = "continue-worker-checkpoint.json"
 CONTINUATION_STATE = "continue-worker-continuation.json"
-SUB_TIMEOUT_S = 180
+SUB_TIMEOUT_S = int(os.environ.get("GYRO_SLICE_TIMEOUT", "180"))
 RESULT_TURN_RE = re.compile(
     r"budget_exhausted|max.?turns|turn.?limit|ran out|stop_reason", re.IGNORECASE
 )
@@ -84,7 +84,7 @@ def build_command(args, prompt_path, resume_id=None):
     cmd = [
         args.cli, "-p", args.profile, "chat", "--cli",
         "--provider", "custom",
-        "--base-url", f"http://127.0.0.1:{args.port}/v1",
+        "--base-url", os.environ.get("GYRO_INFERENCE_BASE_URL", f"http://127.0.0.1:{args.port}/v1"),
         "--model", PORT_MODELS[args.port],
         "--reasoning", "none",
         "--in", str(args.workdir),
@@ -92,6 +92,8 @@ def build_command(args, prompt_path, resume_id=None):
         "--oneshot", "--max-turns", str(args.turns),
         "--format", "stream-json",
     ]
+    if os.environ.get("GYRO_WORKER_TOOLSETS") and resume_id is None:
+        cmd += ["--toolsets", os.environ["GYRO_WORKER_TOOLSETS"]]
     if resume_id is not None:
         # Gateway resumes retain launch policy; do not send creation overrides.
         cmd = [args.cli, "-p", args.profile, "chat", "--cli", "--in", str(args.workdir),
@@ -149,6 +151,7 @@ def new_checkpoint(args, prompt_hash):
         "model": PORT_MODELS[args.port],
         "prompt_hash": prompt_hash,
         "profile": args.profile,
+        "inference_base_url": os.environ.get("GYRO_INFERENCE_BASE_URL", f"http://127.0.0.1:{args.port}/v1"),
         "turns_per_slice": args.turns,
         "slices_budget": args.slices,
         "slices_used": 0,
@@ -186,6 +189,8 @@ def bind_checkpoint(args, prompt_hash):
         )
     if ckpt.get("profile") != args.profile:
         raise SystemExit("checkpoint profile mismatch; refusing")
+    if ckpt.get("inference_base_url") != os.environ.get("GYRO_INFERENCE_BASE_URL", f"http://127.0.0.1:{args.port}/v1"):
+        raise SystemExit("checkpoint inference endpoint mismatch")
     ckpt["slices_budget"] = args.slices
     if ckpt.get("turns_per_slice") != args.turns:
         raise SystemExit("checkpoint turns mismatch; resume preserves launch policy")
@@ -251,7 +256,7 @@ def run_verify(args):
     """Acceptance gate in the workdir; returns exit code, -1 if the run blew up."""
     try:
         proc = subprocess.run(
-            [sys.executable, args.verify_file],
+            [sys.executable, "-c", "import os,runpy,sys; sys.path.insert(0,os.getcwd()); runpy.run_path(sys.argv[1],run_name='__main__')", args.verify_file],
             cwd=args.workdir, capture_output=True, text=True, timeout=SUB_TIMEOUT_S,
         )
     except subprocess.TimeoutExpired:
@@ -266,6 +271,31 @@ def run_verify(args):
     return proc.returncode, (proc.stderr or proc.stdout or "")[-2000:]
 
 
+def continuation_context(args, original):
+    if len(original) <= 12000:
+        return original
+    objective = original.split("\nREFERENCE SOURCE", 1)[0]
+    return (objective[:12000] + "\nFull original required source/context is preserved at "
+            + str(args.prompt_file) + "; SHA256=" + sha256_file(args.prompt_file)
+            + ". Retrieve relevant sections from that file as needed; do not append the entire bundle again.")
+
+
+def workspace_digest(workdir):
+    """Detect unchanged implementation, excluding controller logs and build caches."""
+    digest = hashlib.sha256()
+    for root, dirs, files in os.walk(workdir):
+        dirs[:] = sorted(d for d in dirs if d not in (".git", "__pycache__", "target", ".pytest_cache"))
+        for name in sorted(files):
+            if name.startswith(("slice-", "prompt-slice-", "continue-worker")) or name == "verify.log":
+                continue
+            path = os.path.join(root, name)
+            if os.path.islink(path):
+                continue
+            digest.update(os.path.relpath(path, workdir).encode())
+            digest.update(sha256_file(path).encode())
+    return digest.hexdigest()
+
+
 def loop(args, ckpt, prompt_original):
     """Slice loop; returns the final technical status."""
     if ckpt["technical_status"] in ("FAILED", "IN_FLIGHT"):
@@ -277,12 +307,17 @@ def loop(args, ckpt, prompt_original):
         ckpt["technical_status"] = "PARTIAL"
     while ckpt["slices_used"] < ckpt["slices_budget"]:
         slice_no = ckpt["slices_used"] + 1
+        feedback_file = os.environ.get("GYRO_REVIEW_FEEDBACK")
+        feedback = ""
+        if feedback_file:
+            with open(feedback_file) as f:
+                feedback = "\nSOL correction feedback:\n" + f.read()
         if ckpt["session_id"] is None:
             prompt_path = args.prompt_file
         else:
             prompt_text = continuation_prompt(
-                prompt_original, slice_no, ckpt["failures"],
-                ckpt.get("last_verify_exit"))
+                continuation_context(args, prompt_original), slice_no, ckpt["failures"],
+                ckpt.get("last_verify_exit")) + feedback
             prompt_path = os.path.join(args.workdir, f"prompt-slice-{slice_no}.txt")
             with open(prompt_path, "w") as fh:
                 fh.write(prompt_text)
@@ -340,6 +375,13 @@ def loop(args, ckpt, prompt_original):
         ckpt["technical_status"] = "PARTIAL"
         ckpt["continue_reason"] = "acceptance_rejected_resume_same_session"
         ckpt["failures"] = [verify_tail]
+        digest = workspace_digest(args.workdir)
+        ckpt["nonproductive_slices"] = ckpt.get("nonproductive_slices", 0) + 1 if digest == ckpt.get("workspace_digest") else 0
+        ckpt["workspace_digest"] = digest
+        if ckpt["nonproductive_slices"] >= 2:
+            ckpt["continue_reason"] = "nonproductive_loop_requires_diagnosis"
+            write_atomic(os.path.join(args.workdir, CHECKPOINT_NAME), ckpt)
+            return "PARTIAL"
         write_atomic(os.path.join(args.workdir, CHECKPOINT_NAME), ckpt)
 
     ckpt["technical_status"] = "PARTIAL"
