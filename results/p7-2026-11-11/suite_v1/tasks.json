@@ -1,0 +1,77 @@
+{
+  "suite": "P7 suite-v1 native coding tasks",
+  "version": 1,
+  "tasks": [
+    {
+      "id": "01_toposort",
+      "kind": "coding",
+      "function": "toposort(nodes, prerequisites)",
+      "spec": "Return a new list containing every node exactly once in a valid topological order. nodes is a sequence of unique non-empty strings. prerequisites maps each node to a sequence of prerequisite node names; missing mapping entries mean no prerequisites. Whenever multiple nodes are ready, choose the lexicographically smallest. Reject duplicate/empty nodes, unknown prerequisite names, malformed mapping values, or cycles with ValueError. Do not mutate inputs.",
+      "prompt": "Return Python source only. Implement `toposort(nodes, prerequisites)` exactly as specified.\n\nReturn every node once in a valid topological order. `nodes` is a sequence of unique non-empty strings. `prerequisites` maps nodes to prerequisite names; omitted entries mean none. When several nodes are ready, choose the lexicographically smallest. Raise ValueError for duplicate/empty nodes, unknown prerequisites, malformed values, or cycles. Do not mutate inputs."
+    },
+    {
+      "id": "02_json_pointer_get",
+      "kind": "coding",
+      "function": "json_pointer_get(document, pointer)",
+      "spec": "Implement RFC 6901 JSON Pointer lookup. Empty pointer returns document. A non-empty pointer must start with '/'. Decode each token by replacing '~1' with '/' and '~0' with '~'; any other or trailing '~' escape is ValueError. In dictionaries, use the decoded string key. In lists, accept only canonical nonnegative decimal indices ('0' or a nonzero digit followed by digits); '-' and leading-zero forms are invalid. Missing dictionary key raises KeyError; invalid or out-of-range array index raises IndexError; traversing a scalar raises TypeError. Do not mutate document.",
+      "prompt": "Return Python source only. Implement `json_pointer_get(document, pointer)` with RFC 6901 behavior. Empty pointer returns the document; otherwise pointer starts with '/'. Decode `~1` to `/` and `~0` to `~`; malformed escapes raise ValueError. Dictionary tokens are keys. List tokens are canonical nonnegative decimal indices; '-' and leading zeros are invalid. Missing keys raise KeyError, invalid/out-of-range array indices raise IndexError, and traversal through a scalar raises TypeError. Do not mutate input."
+    },
+    {
+      "id": "03_safe_join",
+      "kind": "coding",
+      "function": "safe_join(root, relative)",
+      "spec": "Use POSIX path rules without touching the filesystem. root and relative must be strings without NUL. root must be absolute. Normalize root with posixpath.normpath. Reject relative if it is absolute or contains any component exactly '..'. Collapse repeated slashes and '.' components in relative. Return the normalized root joined with normalized relative; an empty relative returns normalized root. Backslash is an ordinary character. Invalid inputs raise ValueError. Do not mutate inputs.",
+      "prompt": "Return Python source only. Implement `safe_join(root, relative)` using POSIX path rules only; do not access the filesystem. Both inputs must be NUL-free strings and root must be absolute. Normalize root. Reject an absolute relative path or any relative component exactly `..`. Collapse repeated `/` and `.` components. Return the normalized joined path; empty relative returns normalized root. Backslash is ordinary. Raise ValueError for invalid input."
+    },
+    {
+      "id": "04_retry_delays",
+      "kind": "coding",
+      "function": "retry_delays(n, base, cap)",
+      "spec": "n, base, and cap must be integers but not bool. Require n >= 0 and 0 < base <= cap. Return n integer delays where result[i] = min(base * 2**i, cap). Invalid arguments raise ValueError. Do not mutate inputs.",
+      "prompt": "Return Python source only. Implement `retry_delays(n, base, cap)`: arguments must be integers excluding bool, n >= 0, and 0 < base <= cap. Return a list of n values `min(base * 2**i, cap)` for i from zero. Invalid arguments raise ValueError."
+    },
+    {
+      "id": "05_pack_batches",
+      "kind": "coding",
+      "function": "pack_batches(items, max_count, max_weight)",
+      "spec": "items is a sequence of (id, weight) pairs. IDs are unique non-empty strings. Weights, max_count, and max_weight are positive integers excluding bool. Preserve input order and form contiguous greedy batches: append the next item if both count and summed weight stay within limits; otherwise close the current batch and start another. An item heavier than max_weight or any malformed/duplicate input raises ValueError. Return a list of lists of IDs. Do not mutate inputs.",
+      "prompt": "Return Python source only. Implement `pack_batches(items, max_count, max_weight)`. Each item is `(unique_nonempty_string_id, positive_integer_weight)`; limits are positive integers (bool is invalid). Preserve order and greedily create contiguous batches, closing a batch before adding the next item if count or total weight would exceed its limit. Reject oversized items, duplicates, and malformed inputs with ValueError. Return lists of IDs and do not mutate input."
+    },
+    {
+      "id": "06_lru_trace",
+      "kind": "coding",
+      "function": "lru_trace(capacity, operations)",
+      "spec": "capacity is a nonnegative integer excluding bool. operations is a sequence of ['get', key] or ['put', key, JSON-scalar-value], where key is a non-empty string. A get returns {'key': key, 'found': bool, 'value': value}; missing values are null. A successful get and every put make the key most-recently-used. Updating an existing key replaces its value. If a put exceeds capacity, evict the least-recently-used key; capacity zero stores nothing. Invalid inputs raise ValueError. Return one result per get, in order.",
+      "prompt": "Return Python source only. Implement `lru_trace(capacity, operations)` for operations `['get', key]` and `['put', key, JSON_scalar_value]`. Capacity is a nonnegative integer excluding bool; keys are nonempty strings. Return one dictionary per get: `{\"key\": key, \"found\": bool, \"value\": value_or_null}`. Gets that hit and all puts refresh recency; puts update existing values; overflow evicts the least-recently-used key; capacity zero stores nothing. Raise ValueError for malformed input."
+    },
+    {
+      "id": "07_redact_secrets",
+      "kind": "coding",
+      "function": "redact_secrets(text)",
+      "spec": "text must be str. Replace only the token portion of case-sensitive `API_KEY=<token>` and `Bearer <token>` forms, where token is at least 8 ASCII characters from [A-Za-z0-9_-]. Replace each matching token with `[REDACTED]`; keep the prefix and all other characters unchanged. Match only when the token is not followed by another allowed token character. Invalid input raises ValueError.",
+      "prompt": "Return Python source only. Implement `redact_secrets(text)`. Recognize case-sensitive `API_KEY=<token>` and `Bearer <token>`; token has at least 8 ASCII characters from letters, digits, underscore, or hyphen. Replace only that token with `[REDACTED]`, preserving prefix, punctuation, and unrelated text. Require a token boundary after the match. Non-string input raises ValueError."
+    },
+    {
+      "id": "08_select_nonoverlapping",
+      "kind": "coding",
+      "function": "select_nonoverlapping(jobs)",
+      "spec": "jobs is a sequence of (unique non-empty string id, integer start, integer end) triples with start < end; bool is not an integer here. Intervals are half-open [start,end), so a job may start exactly when another ends. Sort by (end, start, original input index), then greedily accept when start >= last accepted end. Return accepted IDs in acceptance order. Malformed inputs raise ValueError. Do not mutate input.",
+      "prompt": "Return Python source only. Implement `select_nonoverlapping(jobs)` for unique `(id, start, end)` triples. IDs are nonempty strings; start/end are integers excluding bool and start < end. Intervals are half-open. Sort by end, then start, then original input order; greedily accept a job when its start is at least the last accepted end. Return IDs in acceptance order. Raise ValueError for malformed input."
+    },
+    {
+      "id": "09_aggregate_logs",
+      "kind": "coding",
+      "function": "aggregate_logs(records)",
+      "spec": "Each record is a mapping with required fields service (non-empty str), timestamp (integer excluding bool), severity in debug/info/warning/error. Return a list ordered by service lexicographically. Each row is {'service': str, 'count': int, 'severity_counts': {'debug':int,'info':int,'warning':int,'error':int}, 'first_timestamp': int, 'last_timestamp': int}; timestamps are numeric min/max, not input order. Empty input returns []. Malformed records raise ValueError. Do not mutate inputs. Return a list of dictionaries with exactly these keys: {'service': str, 'count': int, 'severity_counts': {'debug': int, 'info': int, 'warning': int, 'error': int}, 'first_timestamp': int, 'last_timestamp': int}. severity_counts has exactly the four named keys. Extra input record fields are allowed and ignored. Extra output fields are invalid.",
+      "prompt": "Return Python source only. Implement `aggregate_logs(records)`. Each record has `service` (nonempty string), `timestamp` (integer excluding bool), and `severity` in debug/info/warning/error. Return rows sorted by service, containing count, all four severity counts (including zeroes), minimum timestamp, and maximum timestamp. Empty input returns []. Malformed data raises ValueError. Do not mutate input. Return a list of dictionaries with exactly these keys: {'service': str, 'count': int, 'severity_counts': {'debug': int, 'info': int, 'warning': int, 'error': int}, 'first_timestamp': int, 'last_timestamp': int}. severity_counts has exactly the four named keys. Extra input record fields are allowed and ignored. Extra output fields are invalid."
+    },
+    {
+      "id": "10_dependency_closure",
+      "kind": "coding",
+      "function": "dependency_closure(graph, roots)",
+      "spec": "graph maps unique non-empty string node names to sequences of dependency names. Every dependency and root must be a graph key. Return a sorted list containing every root and all transitively reachable dependencies exactly once. Cycles are allowed. Reject malformed graph, duplicate dependency entries, unknown nodes, or invalid roots with ValueError. Do not mutate inputs.",
+      "prompt": "Return Python source only. Implement `dependency_closure(graph, roots)`. `graph` maps nonempty node strings to sequences of dependency node strings. Roots and every dependency must exist as keys. Return a lexicographically sorted list of roots and all transitively reachable dependencies, including roots, once each; cycles are allowed. Reject malformed graph, duplicate edges, or unknown names with ValueError. Do not mutate inputs."
+    }
+  ],
+  "revision": 1
+}

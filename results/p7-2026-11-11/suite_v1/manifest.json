@@ -1,0 +1,173 @@
+{
+  "suite": "P7 suite-v1 native coding tasks",
+  "version": 1,
+  "status": "ORACLE_PREVALIDATED",
+  "revision": 1,
+  "historical_v2_manifest_sha256": "f705357888003fe37a1d6794857ccae9c55ad57efaab48b6344c9a018104c5f6",
+  "external_p4_tasks": [
+    "merge_intervals",
+    "parse_records"
+  ],
+  "frozen_utc": "2026-11-11T23:14:45.308594+00:00",
+  "seed": 20261111,
+  "readme_file_sha256": "fbc02cb3822284531f6b24cd6e193a37e465fbdb702e7ae6425efd765e93b219",
+  "tasks_file_sha256": "5bb12a0bd5b96f63e9ab458596e0759cd0320cfc32898b232b3feeefd7ef677b",
+  "reference_file_sha256": "a1aeecb3e7aa33d84041ce38154175a19bb03e276555afc79c161e54f0b31a72",
+  "validator_file_sha256": "5b33109545d5a808a70d89c3a530618d38a091c01604195ad7dd643d15ef9d2e",
+  "retry_protocol": {
+    "attempts_per_task": 3,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "same_prompt_bytes_every_attempt": true,
+    "prompt_tuning_or_human_feedback_between_attempts": false,
+    "run_all_three_even_after_early_acceptance": true,
+    "fresh_tool_environment_each_attempt": true,
+    "pass_at_1": "attempt 1 independently accepted",
+    "pass_at_3": "at least one of attempts 1-3 independently accepted",
+    "attempts_to_first_accept": "lowest successful attempt index; null if none within 3 (right-censored)",
+    "minimum_time_to_accepted_wall_ms": "sum of wall_ms from attempt 1 through first accepted attempt; null if no acceptance",
+    "minimum_time_to_accepted_generation_ms": "sum of generation_ms from attempt 1 through first accepted attempt; null if no acceptance",
+    "failed_first_attempt_penalty": "if attempt 1 fails and a later attempt passes, penalty is attempt-1 wall_ms/generation_ms; if none pass, penalty is the sum of all failed attempt wall_ms/generation_ms; zero if attempt 1 passes",
+    "inter_attempt_delay": "zero intentional delay; only unavoidable API/runner overhead",
+    "primary_timing_metric": "wall_ms",
+    "generation_aggregation": "sum included generation_ms only if all are non-null; otherwise null; empty penalty sum is zero",
+    "generation_missing_counts": "generation_missing_attempt_count counts all 3; time_to_accept_generation_missing_count counts through first accept or null if none; penalty_generation_missing_count counts the penalty subset",
+    "generation_time": "first non-empty visible content token to final visible content token; null when no visible content",
+    "wall_time": "client request start through complete response including TTFT and generation"
+  },
+  "attempt_record_schema": {
+    "task_id": "string",
+    "candidate_id": "string",
+    "attempt_index": "1|2|3",
+    "seed": "42|43|44",
+    "prompt_sha256": "hex",
+    "start_utc": "ISO-8601",
+    "end_utc": "ISO-8601",
+    "wall_ms": "number",
+    "generation_ms": "number|null",
+    "ttft_ms": "number|null",
+    "output_sha256": "hex",
+    "oracle_accepted": "boolean",
+    "failure_class": "string|null",
+    "oracle_id": "string",
+    "exact_input_sha256": "hex|null"
+  },
+  "task_candidate_summary_schema": {
+    "task_id": "string",
+    "candidate_id": "string",
+    "attempts": "array of exactly 3 attempt records",
+    "pass_at_1": "boolean",
+    "pass_at_3": "boolean",
+    "attempts_to_first_accept": "1|2|3|null",
+    "minimum_time_to_accepted_wall_ms": "number|null",
+    "minimum_time_to_accepted_generation_ms": "number|null",
+    "failed_first_attempt_penalty_wall_ms": "number",
+    "failed_first_attempt_penalty_generation_ms": "number|null",
+    "generation_missing_attempt_count": "integer 0..3",
+    "time_to_accept_generation_missing_count": "integer 0..3|null",
+    "penalty_generation_missing_count": "integer 0..3",
+    "all_attempts_failed": "boolean"
+  },
+  "tasks": [
+    {
+      "id": "01_toposort",
+      "kind": "coding",
+      "function": "toposort(nodes, prerequisites)",
+      "spec_sha256": "c40ca0ab06be323f51a9947d59400fdf76bb8d81d5562491cb1852cc830d1482",
+      "prompt_sha256": "154cf4709cec46856e5195c4ec1ed977f18fe0672eb5cc04029fe26302a605d9",
+      "oracle_checks": 104
+    },
+    {
+      "id": "02_json_pointer_get",
+      "kind": "coding",
+      "function": "json_pointer_get(document, pointer)",
+      "spec_sha256": "9c90938f3f966d583c945b6e80e05522f57e43998923140ffe53b6b51f923f4f",
+      "prompt_sha256": "95c7595ef63ac1fd8ce4ba7caf19a8d9b3ea6d1b60b274108c4ecf5e8ac7442c",
+      "oracle_checks": {
+        "fixed_cases": 10,
+        "candidate_exception_cases": 10,
+        "candidate_success_cases": 1,
+        "huge_index_cases": 2
+      }
+    },
+    {
+      "id": "03_safe_join",
+      "kind": "coding",
+      "function": "safe_join(root, relative)",
+      "spec_sha256": "0676e0141328003a9ae19404f349a504780a421dec97be80d2ef9ee31821bc66",
+      "prompt_sha256": "aa2e78286b91f835d5ec9945e65e85a0a137be1a98f324ea8f10fb99a442283e",
+      "oracle_checks": 9
+    },
+    {
+      "id": "04_retry_delays",
+      "kind": "coding",
+      "function": "retry_delays(n, base, cap)",
+      "spec_sha256": "0e0c4819329c406fb04005f90be0acbfe234ef9f9d1a4caa40e7743a30cd4454",
+      "prompt_sha256": "faadbcc51a99d0d32be1f3437a94523af8482948ce268a0524c7ef083a54e87a",
+      "oracle_checks": 208
+    },
+    {
+      "id": "05_pack_batches",
+      "kind": "coding",
+      "function": "pack_batches(items, max_count, max_weight)",
+      "spec_sha256": "884e34c758cfc268ddfa73363a57fb58537e025c7290df3777a7208c5c9472ee",
+      "prompt_sha256": "88385c658ea0dc37b407e5691ca71b16acdc07cad73e2e1cc1d802420ff7c454",
+      "oracle_checks": 105
+    },
+    {
+      "id": "06_lru_trace",
+      "kind": "coding",
+      "function": "lru_trace(capacity, operations)",
+      "spec_sha256": "ffe85a3ab7ae4527046f44e4c59dda5822ab48b358b25d60067aba5c0a07b96b",
+      "prompt_sha256": "8e848fc96532e915ac87ffc670e29ce082d8cae465961a08ba5b1cc47a4bdb6a",
+      "oracle_checks": 6
+    },
+    {
+      "id": "07_redact_secrets",
+      "kind": "coding",
+      "function": "redact_secrets(text)",
+      "spec_sha256": "9c5833c2d2ea2e953a9584bafded72811f25b2a708d4303d53a4a61a91e99b6e",
+      "prompt_sha256": "cbd16a415cb56edc5e042e6fe89c33276352a7776dee724180abf07585a90b97",
+      "oracle_checks": 4
+    },
+    {
+      "id": "08_select_nonoverlapping",
+      "kind": "coding",
+      "function": "select_nonoverlapping(jobs)",
+      "spec_sha256": "a1e383225e88dea1f841071c805e7876f6d14010663a619508581133d98e7e75",
+      "prompt_sha256": "dd686d5608a5e13d37dc6b0bfcc0fd93eb49fd6c9ea5e8369832cd26aa7b2804",
+      "oracle_checks": 254
+    },
+    {
+      "id": "09_aggregate_logs",
+      "kind": "coding",
+      "function": "aggregate_logs(records)",
+      "spec_sha256": "49547b06ac9d623fa367679c747a8a8d46f76768008c7f9245518b396633e51c",
+      "prompt_sha256": "96229d1804ca2359b1b729e6d5efdce6d2f1de8ccfebcec60832727386e762ba",
+      "oracle_checks": {
+        "fixed_cases": 6,
+        "candidate_schema_cases": 2,
+        "extra_output_rejected": true
+      }
+    },
+    {
+      "id": "10_dependency_closure",
+      "kind": "coding",
+      "function": "dependency_closure(graph, roots)",
+      "spec_sha256": "fb8aee7779fdd0fd7faaa1a8d02d28df48a8abe5c062c6c6e078df7c765f177c",
+      "prompt_sha256": "850cb9678a1997a6784aaa033ff101030a16bbf4b22f46682f44537fa3b07795",
+      "oracle_checks": 104
+    }
+  ],
+  "validation_summary": {
+    "toposort_seeded_dags": 100,
+    "retry_random_cases": 200,
+    "batch_random_cases": 100,
+    "interval_random_vs_bruteforce": 250,
+    "dependency_random_graphs": 100,
+    "generation_aggregation_cases": 32
+  }
+}
