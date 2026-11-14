@@ -1,0 +1,734 @@
+[
+  {
+    "id": "local-f1a324b813ed19e23f14ba69033c6ad2ca19c6a2e89eb0f50475ebfa84aed7af",
+    "profile_name": "gyro-worker-1",
+    "model": "ready-gyro-l-abl",
+    "cwd": "/home/joe/.local/state/codex/dual-worker-20261114/worker-1",
+    "billing_provider": "custom",
+    "billing_base_url": "http://127.0.0.1:8080/v1",
+    "input_tokens": 30239,
+    "output_tokens": 10599,
+    "api_call_count": 17,
+    "tool_call_count": 18,
+    "started_at": 1794692336.557971,
+    "ended_at": null,
+    "timings": {
+      "source": "message_timestamps",
+      "available": true,
+      "complete": false,
+      "unavailable_reason": null,
+      "message_timestamps": {
+        "available": 37,
+        "missing": 0
+      },
+      "first_message_at": "2026-11-14T21:38:58.864521+00:00",
+      "last_message_at": "2026-11-14T21:42:16.285810+00:00",
+      "wall_clock_ms": 197421,
+      "largest_gap_ms": 61353,
+      "role_counts": {
+        "user": 2,
+        "assistant": 17,
+        "tool": 18
+      },
+      "tool_result_count": 18,
+      "tool_calls_emitted": 18,
+      "intervals": [
+        {
+          "from_message_id": 60,
+          "to_message_id": 61,
+          "from_role": "user",
+          "to_role": "assistant",
+          "gap_ms": 13285
+        },
+        {
+          "from_message_id": 61,
+          "to_message_id": 62,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 340
+        },
+        {
+          "from_message_id": 62,
+          "to_message_id": 63,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 3074
+        },
+        {
+          "from_message_id": 63,
+          "to_message_id": 64,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 80
+        },
+        {
+          "from_message_id": 64,
+          "to_message_id": 65,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 14219
+        },
+        {
+          "from_message_id": 65,
+          "to_message_id": 66,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 191
+        },
+        {
+          "from_message_id": 66,
+          "to_message_id": 67,
+          "from_role": "tool",
+          "to_role": "tool",
+          "gap_ms": 7
+        },
+        {
+          "from_message_id": 67,
+          "to_message_id": 68,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 4525
+        },
+        {
+          "from_message_id": 68,
+          "to_message_id": 69,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 816
+        },
+        {
+          "from_message_id": 69,
+          "to_message_id": 70,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 3392
+        },
+        {
+          "from_message_id": 70,
+          "to_message_id": 71,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 131
+        },
+        {
+          "from_message_id": 71,
+          "to_message_id": 72,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 5853
+        },
+        {
+          "from_message_id": 72,
+          "to_message_id": 73,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 634
+        },
+        {
+          "from_message_id": 73,
+          "to_message_id": 74,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 5884
+        },
+        {
+          "from_message_id": 74,
+          "to_message_id": 75,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 110
+        },
+        {
+          "from_message_id": 75,
+          "to_message_id": 76,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 23013
+        },
+        {
+          "from_message_id": 76,
+          "to_message_id": 77,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 43
+        },
+        {
+          "from_message_id": 77,
+          "to_message_id": 78,
+          "from_role": "tool",
+          "to_role": "tool",
+          "gap_ms": 5
+        },
+        {
+          "from_message_id": 78,
+          "to_message_id": 79,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 2022
+        },
+        {
+          "from_message_id": 79,
+          "to_message_id": 80,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 78
+        },
+        {
+          "from_message_id": 80,
+          "to_message_id": 81,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 6026
+        },
+        {
+          "from_message_id": 81,
+          "to_message_id": 82,
+          "from_role": "assistant",
+          "to_role": "user",
+          "gap_ms": 61353
+        },
+        {
+          "from_message_id": 82,
+          "to_message_id": 86,
+          "from_role": "user",
+          "to_role": "assistant",
+          "gap_ms": 22291
+        },
+        {
+          "from_message_id": 86,
+          "to_message_id": 87,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 99
+        },
+        {
+          "from_message_id": 87,
+          "to_message_id": 88,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 1553
+        },
+        {
+          "from_message_id": 88,
+          "to_message_id": 89,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 318
+        },
+        {
+          "from_message_id": 89,
+          "to_message_id": 90,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 6131
+        },
+        {
+          "from_message_id": 90,
+          "to_message_id": 91,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 107
+        },
+        {
+          "from_message_id": 91,
+          "to_message_id": 92,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 3148
+        },
+        {
+          "from_message_id": 92,
+          "to_message_id": 93,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 655
+        },
+        {
+          "from_message_id": 93,
+          "to_message_id": 94,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 11834
+        },
+        {
+          "from_message_id": 94,
+          "to_message_id": 95,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 60
+        },
+        {
+          "from_message_id": 95,
+          "to_message_id": 96,
+          "from_role": "tool",
+          "to_role": "tool",
+          "gap_ms": 3
+        },
+        {
+          "from_message_id": 96,
+          "to_message_id": 97,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 2500
+        },
+        {
+          "from_message_id": 97,
+          "to_message_id": 98,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 98
+        },
+        {
+          "from_message_id": 98,
+          "to_message_id": 99,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 3540
+        }
+      ]
+    },
+    "tool_counts": {
+      "terminal": 9,
+      "write_file": 4,
+      "patch": 5
+    }
+  },
+  {
+    "id": "local-1316b8bd979040b2fc4002fb290d6ac39f8da3f89d5df2549d405dea63344923",
+    "profile_name": "gyro-worker-2",
+    "model": "ready-gyro-l-abl",
+    "cwd": "/home/joe/.local/state/codex/dual-worker-20261114/worker-2",
+    "billing_provider": "custom",
+    "billing_base_url": "http://127.0.0.1:8080/v1",
+    "input_tokens": 17896,
+    "output_tokens": 10057,
+    "api_call_count": 23,
+    "tool_call_count": 29,
+    "started_at": 1794692336.662142,
+    "ended_at": null,
+    "timings": {
+      "source": "message_timestamps",
+      "available": true,
+      "complete": false,
+      "unavailable_reason": null,
+      "message_timestamps": {
+        "available": 57,
+        "missing": 0
+      },
+      "first_message_at": "2026-11-14T21:38:58.750563+00:00",
+      "last_message_at": "2026-11-14T21:43:43.786493+00:00",
+      "wall_clock_ms": 285036,
+      "largest_gap_ms": 85142,
+      "role_counts": {
+        "user": 4,
+        "assistant": 24,
+        "tool": 29
+      },
+      "tool_result_count": 29,
+      "tool_calls_emitted": 29,
+      "intervals": [
+        {
+          "from_message_id": 24,
+          "to_message_id": 25,
+          "from_role": "user",
+          "to_role": "assistant",
+          "gap_ms": 13653
+        },
+        {
+          "from_message_id": 25,
+          "to_message_id": 26,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 197
+        },
+        {
+          "from_message_id": 26,
+          "to_message_id": 27,
+          "from_role": "tool",
+          "to_role": "tool",
+          "gap_ms": 55
+        },
+        {
+          "from_message_id": 27,
+          "to_message_id": 28,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 1610
+        },
+        {
+          "from_message_id": 28,
+          "to_message_id": 29,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 56
+        },
+        {
+          "from_message_id": 29,
+          "to_message_id": 30,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 10493
+        },
+        {
+          "from_message_id": 30,
+          "to_message_id": 31,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 130
+        },
+        {
+          "from_message_id": 31,
+          "to_message_id": 32,
+          "from_role": "tool",
+          "to_role": "tool",
+          "gap_ms": 25
+        },
+        {
+          "from_message_id": 32,
+          "to_message_id": 33,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 5040
+        },
+        {
+          "from_message_id": 33,
+          "to_message_id": 34,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 122
+        },
+        {
+          "from_message_id": 34,
+          "to_message_id": 35,
+          "from_role": "tool",
+          "to_role": "tool",
+          "gap_ms": 3
+        },
+        {
+          "from_message_id": 35,
+          "to_message_id": 36,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 4587
+        },
+        {
+          "from_message_id": 36,
+          "to_message_id": 37,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 118
+        },
+        {
+          "from_message_id": 37,
+          "to_message_id": 38,
+          "from_role": "tool",
+          "to_role": "tool",
+          "gap_ms": 18
+        },
+        {
+          "from_message_id": 38,
+          "to_message_id": 39,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 3962
+        },
+        {
+          "from_message_id": 39,
+          "to_message_id": 40,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 163
+        },
+        {
+          "from_message_id": 40,
+          "to_message_id": 41,
+          "from_role": "tool",
+          "to_role": "tool",
+          "gap_ms": 74
+        },
+        {
+          "from_message_id": 41,
+          "to_message_id": 42,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 1885
+        },
+        {
+          "from_message_id": 42,
+          "to_message_id": 43,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 22
+        },
+        {
+          "from_message_id": 43,
+          "to_message_id": 44,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 2101
+        },
+        {
+          "from_message_id": 44,
+          "to_message_id": 45,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 1712
+        },
+        {
+          "from_message_id": 45,
+          "to_message_id": 46,
+          "from_role": "tool",
+          "to_role": "tool",
+          "gap_ms": 248
+        },
+        {
+          "from_message_id": 46,
+          "to_message_id": 47,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 8469
+        },
+        {
+          "from_message_id": 47,
+          "to_message_id": 48,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 79
+        },
+        {
+          "from_message_id": 48,
+          "to_message_id": 49,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 4233
+        },
+        {
+          "from_message_id": 49,
+          "to_message_id": 50,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 89
+        },
+        {
+          "from_message_id": 50,
+          "to_message_id": 51,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 26844
+        },
+        {
+          "from_message_id": 51,
+          "to_message_id": 52,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 43
+        },
+        {
+          "from_message_id": 52,
+          "to_message_id": 53,
+          "from_role": "tool",
+          "to_role": "tool",
+          "gap_ms": 4
+        },
+        {
+          "from_message_id": 53,
+          "to_message_id": 54,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 1799
+        },
+        {
+          "from_message_id": 54,
+          "to_message_id": 55,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 82
+        },
+        {
+          "from_message_id": 55,
+          "to_message_id": 56,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 1794
+        },
+        {
+          "from_message_id": 56,
+          "to_message_id": 57,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 93
+        },
+        {
+          "from_message_id": 57,
+          "to_message_id": 58,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 5357
+        },
+        {
+          "from_message_id": 58,
+          "to_message_id": 59,
+          "from_role": "assistant",
+          "to_role": "user",
+          "gap_ms": 19142
+        },
+        {
+          "from_message_id": 59,
+          "to_message_id": 60,
+          "from_role": "user",
+          "to_role": "assistant",
+          "gap_ms": 1896
+        },
+        {
+          "from_message_id": 60,
+          "to_message_id": 61,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 198
+        },
+        {
+          "from_message_id": 61,
+          "to_message_id": 62,
+          "from_role": "tool",
+          "to_role": "tool",
+          "gap_ms": 57
+        },
+        {
+          "from_message_id": 62,
+          "to_message_id": 63,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 3276
+        },
+        {
+          "from_message_id": 63,
+          "to_message_id": 64,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 2123
+        },
+        {
+          "from_message_id": 64,
+          "to_message_id": 65,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 5923
+        },
+        {
+          "from_message_id": 65,
+          "to_message_id": 66,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 20
+        },
+        {
+          "from_message_id": 66,
+          "to_message_id": 67,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 1963
+        },
+        {
+          "from_message_id": 67,
+          "to_message_id": 68,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 136
+        },
+        {
+          "from_message_id": 68,
+          "to_message_id": 69,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 4099
+        },
+        {
+          "from_message_id": 69,
+          "to_message_id": 70,
+          "from_role": "assistant",
+          "to_role": "user",
+          "gap_ms": 85142
+        },
+        {
+          "from_message_id": 70,
+          "to_message_id": 71,
+          "from_role": "user",
+          "to_role": "assistant",
+          "gap_ms": 12675
+        },
+        {
+          "from_message_id": 71,
+          "to_message_id": 72,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 13550
+        },
+        {
+          "from_message_id": 72,
+          "to_message_id": 73,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 4
+        },
+        {
+          "from_message_id": 73,
+          "to_message_id": 74,
+          "from_role": "assistant",
+          "to_role": "user",
+          "gap_ms": 28074
+        },
+        {
+          "from_message_id": 74,
+          "to_message_id": 75,
+          "from_role": "user",
+          "to_role": "assistant",
+          "gap_ms": 2134
+        },
+        {
+          "from_message_id": 75,
+          "to_message_id": 76,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 22
+        },
+        {
+          "from_message_id": 76,
+          "to_message_id": 77,
+          "from_role": "tool",
+          "to_role": "tool",
+          "gap_ms": 132
+        },
+        {
+          "from_message_id": 77,
+          "to_message_id": 78,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 5568
+        },
+        {
+          "from_message_id": 78,
+          "to_message_id": 79,
+          "from_role": "assistant",
+          "to_role": "tool",
+          "gap_ms": 20
+        },
+        {
+          "from_message_id": 79,
+          "to_message_id": 80,
+          "from_role": "tool",
+          "to_role": "assistant",
+          "gap_ms": 3721
+        }
+      ]
+    },
+    "tool_counts": {
+      "terminal": 14,
+      "write_file": 7,
+      "read_file": 3,
+      "patch": 1,
+      "tool_search": 1,
+      "tool_describe": 1,
+      "tool_call": 2
+    }
+  }
+]

@@ -1,0 +1,13 @@
+{"time": 1794692496.8347883, "method": "GET", "path": "/api/v1/models", "body_bytes": 0, "status": 503}
+{"time": 1794692496.8354487, "method": "GET", "path": "/api/tags", "body_bytes": 0, "status": 503}
+{"time": 1794692496.8359382, "method": "GET", "path": "/v1/props", "body_bytes": 0, "status": 503}
+{"time": 1794692496.836394, "method": "GET", "path": "/props", "body_bytes": 0, "status": 503}
+{"time": 1794692496.8368578, "method": "GET", "path": "/version", "body_bytes": 0, "status": 503}
+{"time": 1794692496.8480315, "method": "GET", "path": "/v1/models", "body_bytes": 0, "status": 503}
+{"time": 1794692496.8542747, "method": "GET", "path": "/models", "body_bytes": 0, "status": 503}
+{"time": 1794692496.8618164, "method": "GET", "path": "/v1/models", "body_bytes": 0, "status": 503}
+{"time": 1794692496.8658926, "method": "POST", "path": "/api/show", "body_bytes": 27, "status": 503}
+{"time": 1794692496.903281, "method": "POST", "path": "/v1/chat/completions", "body_bytes": 26408, "status": 503}
+{"time": 1794692496.9530528, "method": "POST", "path": "/v1/chat/completions", "body_bytes": 26354, "status": 503}
+{"time": 1794692576.7381563, "method": "POST", "path": "/v1/chat/completions", "body_bytes": 26682, "status": 503}
+{"time": 1794692576.765201, "method": "POST", "path": "/v1/chat/completions", "body_bytes": 26628, "status": 503}

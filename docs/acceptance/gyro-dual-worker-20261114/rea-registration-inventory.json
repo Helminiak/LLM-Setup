@@ -1,0 +1,167 @@
+[
+  {
+    "profile": "codex-worker",
+    "server": "rea",
+    "command": "/home/joe/.nvm/versions/node/v24.22.2/bin/rea",
+    "args": [
+      "mcp"
+    ],
+    "tools": null,
+    "environment_key_names": [
+      "HOPPER_LAUNCHER_PATH"
+    ]
+  },
+  {
+    "profile": "qwen-windows-worker",
+    "server": "rea",
+    "command": "/home/joe/.nvm/versions/node/v24.22.2/bin/rea",
+    "args": [
+      "mcp"
+    ],
+    "tools": null,
+    "environment_key_names": [
+      "HOPPER_LAUNCHER_PATH"
+    ]
+  },
+  {
+    "profile": "gyro-coder-supervisor",
+    "server": "rea",
+    "command": "/home/joe/.nvm/versions/node/v24.22.2/bin/rea",
+    "args": [
+      "mcp"
+    ],
+    "tools": null,
+    "environment_key_names": [
+      "HOPPER_LAUNCHER_PATH"
+    ]
+  },
+  {
+    "profile": "browser-agent-1",
+    "server": "rea",
+    "command": "/home/joe/.nvm/versions/node/v24.22.2/bin/rea",
+    "args": [
+      "mcp"
+    ],
+    "tools": null,
+    "environment_key_names": [
+      "HOPPER_LAUNCHER_PATH"
+    ]
+  },
+  {
+    "profile": "qwen-worker-2",
+    "server": "rea",
+    "command": "/home/joe/.nvm/versions/node/v24.22.2/bin/rea",
+    "args": [
+      "mcp"
+    ],
+    "tools": null,
+    "environment_key_names": [
+      "HOPPER_LAUNCHER_PATH"
+    ]
+  },
+  {
+    "profile": "gyro-worker-2",
+    "server": "rea",
+    "command": "/home/joe/.nvm/versions/node/v24.22.2/bin/node",
+    "args": [
+      "/home/joe/.nvm/versions/node/v24.22.2/lib/node_modules/rea-agents/scripts/rea.mjs",
+      "mcp"
+    ],
+    "tools": {
+      "include": [
+        "inspect_with_objdump"
+      ]
+    },
+    "environment_key_names": []
+  },
+  {
+    "profile": "senior-reviewer",
+    "server": "rea",
+    "command": "/home/joe/.nvm/versions/node/v24.22.2/bin/rea",
+    "args": [
+      "mcp"
+    ],
+    "tools": null,
+    "environment_key_names": [
+      "HOPPER_LAUNCHER_PATH"
+    ]
+  },
+  {
+    "profile": "hermes-supervisor",
+    "server": "rea",
+    "command": "/home/joe/.nvm/versions/node/v24.22.2/bin/node",
+    "args": [
+      "/home/joe/.nvm/versions/node/v24.22.2/lib/node_modules/rea-agents/scripts/rea.mjs",
+      "mcp"
+    ],
+    "tools": {
+      "include": [
+        "inspect_with_objdump"
+      ]
+    },
+    "environment_key_names": []
+  },
+  {
+    "profile": "gyro-worker-1",
+    "server": "rea",
+    "command": "/home/joe/.nvm/versions/node/v24.22.2/bin/node",
+    "args": [
+      "/home/joe/.nvm/versions/node/v24.22.2/lib/node_modules/rea-agents/scripts/rea.mjs",
+      "mcp"
+    ],
+    "tools": {
+      "include": [
+        "inspect_with_objdump"
+      ]
+    },
+    "environment_key_names": []
+  },
+  {
+    "profile": "qwen-worker",
+    "server": "rea",
+    "command": "/home/joe/.nvm/versions/node/v24.22.2/bin/rea",
+    "args": [
+      "mcp"
+    ],
+    "tools": null,
+    "environment_key_names": [
+      "HOPPER_LAUNCHER_PATH"
+    ]
+  },
+  {
+    "profile": "gyro-local-worker",
+    "server": "rea",
+    "command": "/home/joe/.nvm/versions/node/v24.22.2/bin/rea",
+    "args": [
+      "mcp"
+    ],
+    "tools": null,
+    "environment_key_names": [
+      "HOPPER_LAUNCHER_PATH"
+    ]
+  },
+  {
+    "profile": "gyro-coder-gpu1",
+    "server": "rea",
+    "command": "/home/joe/.nvm/versions/node/v24.22.2/bin/rea",
+    "args": [
+      "mcp"
+    ],
+    "tools": null,
+    "environment_key_names": [
+      "HOPPER_LAUNCHER_PATH"
+    ]
+  },
+  {
+    "profile": "reviewer-economy",
+    "server": "rea",
+    "command": "/home/joe/.nvm/versions/node/v24.22.2/bin/rea",
+    "args": [
+      "mcp"
+    ],
+    "tools": null,
+    "environment_key_names": [
+      "HOPPER_LAUNCHER_PATH"
+    ]
+  }
+]

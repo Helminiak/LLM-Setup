@@ -1,0 +1,8 @@
+{
+  "/home/joe/.hermes/config.yaml": true,
+  "/home/joe/.hermes/profiles/qwen-worker/config.yaml": true,
+  "/home/joe/.config/systemd/user/llamactl.service": true,
+  "/home/joe/.config/systemd/user/llama-swap-reality.service": true,
+  "/home/joe/.config/systemd/user/llama-swap.service": true,
+  "/home/joe/.config/systemd/user/hermes-gateway.service": true
+}

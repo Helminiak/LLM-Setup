@@ -1,0 +1,342 @@
+{
+  "gyro-worker-1": {
+    "before_sha256": "f5194a6c1f6efd57faa983dd68df75fb5f34e6d29c550d933caf262753085152",
+    "after_sha256": "c0058f8b3725b0b6eb497ecb1bf14dc2b3de051a1d47edcff920af174e44d0df",
+    "before": {
+      "model": {
+        "default": "q35-gpu1",
+        "provider": "custom:codebreaker",
+        "openai_runtime": "auto",
+        "base_url": "http://127.0.0.1:8080/v1",
+        "api_mode": "chat_completions",
+        "context_length": 65536
+      },
+      "providers": {
+        "openai-compatible": {
+          "name": "q35-gpu1",
+          "base_url": "http://127.0.0.1:8080/v1",
+          "model": "q35-gpu1",
+          "context_length": 65536,
+          "api_mode": "chat_completions",
+          "enabled": false
+        },
+        "custom": {
+          "name": "q35-gpu1",
+          "base_url": "http://127.0.0.1:8080/v1",
+          "model": "q35-gpu1",
+          "context_length": 65536,
+          "api_mode": "chat_completions",
+          "enabled": false
+        },
+        "codebreaker": {
+          "name": "CodeBreaker (Gyro-L)",
+          "base_url": "http://127.0.0.1:8080/v1",
+          "default_model": "q35-gpu1",
+          "model": "q35-gpu1",
+          "context_length": 65536,
+          "api_mode": "chat_completions",
+          "discover_models": true,
+          "models": {
+            "q35-gpu1": {
+              "context_length": 65536
+            }
+          },
+          "models_discovered": true
+        }
+      },
+      "mcp_servers": {
+        "rea": {
+          "command": "/home/joe/.nvm/versions/node/v24.22.2/bin/rea",
+          "args": [
+            "mcp"
+          ],
+          "env": {
+            "HOPPER_LAUNCHER_PATH": "/opt/hopper/bin/Hopper"
+          }
+        },
+        "hindsight_eng": {
+          "url": "http://127.0.0.1:8888/mcp/eng/"
+        }
+      },
+      "_config_version": 53,
+      "compression": {
+        "enabled": true,
+        "threshold": 0.75
+      },
+      "telemetry": {
+        "shared_metrics": {
+          "enabled": false,
+          "send": false,
+          "offer_version": 2
+        }
+      }
+    },
+    "after": {
+      "model": {
+        "default": "ready-gyro-l-abl",
+        "provider": "custom:codebreaker",
+        "openai_runtime": "auto",
+        "base_url": "http://127.0.0.1:8080/v1",
+        "api_mode": "chat_completions",
+        "context_length": 65536
+      },
+      "providers": {
+        "openai-compatible": {
+          "name": "q35-gpu1",
+          "base_url": "http://127.0.0.1:8080/v1",
+          "model": "q35-gpu1",
+          "context_length": 65536,
+          "api_mode": "chat_completions",
+          "enabled": false
+        },
+        "custom": {
+          "name": "q35-gpu1",
+          "base_url": "http://127.0.0.1:8080/v1",
+          "model": "q35-gpu1",
+          "context_length": 65536,
+          "api_mode": "chat_completions",
+          "enabled": false
+        },
+        "codebreaker": {
+          "name": "CodeBreaker (Gyro-L)",
+          "base_url": "http://127.0.0.1:8080/v1",
+          "default_model": "ready-gyro-l-abl",
+          "model": "ready-gyro-l-abl",
+          "context_length": 65536,
+          "api_mode": "chat_completions",
+          "discover_models": false,
+          "models": {
+            "ready-gyro-l-abl": {
+              "context_length": 65536
+            }
+          },
+          "models_discovered": true
+        }
+      },
+      "mcp_servers": {
+        "rea": {
+          "command": "/home/joe/.nvm/versions/node/v24.22.2/bin/node",
+          "args": [
+            "/home/joe/.nvm/versions/node/v24.22.2/lib/node_modules/rea-agents/scripts/rea.mjs",
+            "mcp"
+          ],
+          "tools": {
+            "include": [
+              "inspect_with_objdump"
+            ]
+          }
+        }
+      },
+      "_config_version": 53,
+      "compression": {
+        "enabled": true,
+        "threshold": 0.75
+      },
+      "telemetry": {
+        "shared_metrics": {
+          "enabled": false,
+          "send": false,
+          "offer_version": 2
+        }
+      },
+      "fallback_model": [],
+      "platform_toolsets": {
+        "cli": [
+          "terminal",
+          "file",
+          "mcp-rea"
+        ]
+      },
+      "agent": {
+        "api_max_retries": 1,
+        "auto_recovery_cycles": 0,
+        "max_turns": 24
+      },
+      "terminal": {
+        "backend": "local",
+        "cwd": "/home/joe/.local/state/codex/dual-worker-20261114/worker-1",
+        "timeout": 60
+      },
+      "kanban": {
+        "dispatch_in_gateway": false,
+        "dispatch_profiles": []
+      },
+      "auxiliary": {
+        "compression": {
+          "provider": "custom:codebreaker",
+          "model": "ready-gyro-l-abl"
+        }
+      }
+    }
+  },
+  "gyro-worker-2": {
+    "before_sha256": "645ff018d53622fc5a4d8299e843be1cae172b4d588cf245baf0ef838a5044c9",
+    "after_sha256": "f31d400d79b6c4f2ad5668e023579ed9e23590e211c85c10b2f2975f08bcfb48",
+    "before": {
+      "model": {
+        "default": "q35-gpu0",
+        "provider": "custom:codebreaker",
+        "openai_runtime": "auto",
+        "base_url": "http://127.0.0.1:8080/v1",
+        "api_mode": "chat_completions",
+        "context_length": 65536
+      },
+      "providers": {
+        "openai-compatible": {
+          "name": "q35-gpu0",
+          "base_url": "http://127.0.0.1:8080/v1",
+          "model": "q35-gpu0",
+          "context_length": 65536,
+          "api_mode": "chat_completions",
+          "enabled": false
+        },
+        "custom": {
+          "name": "q35-gpu0",
+          "base_url": "http://127.0.0.1:8080/v1",
+          "model": "q35-gpu0",
+          "context_length": 65536,
+          "api_mode": "chat_completions",
+          "enabled": false
+        },
+        "codebreaker": {
+          "name": "CodeBreaker (Gyro-L)",
+          "base_url": "http://127.0.0.1:8080/v1",
+          "default_model": "q35-gpu0",
+          "model": "q35-gpu0",
+          "context_length": 65536,
+          "api_mode": "chat_completions",
+          "discover_models": true,
+          "models": {
+            "q35-gpu0": {
+              "context_length": 65536
+            }
+          },
+          "models_discovered": true
+        }
+      },
+      "mcp_servers": {
+        "rea": {
+          "command": "/home/joe/.nvm/versions/node/v24.22.2/bin/rea",
+          "args": [
+            "mcp"
+          ],
+          "env": {
+            "HOPPER_LAUNCHER_PATH": "/opt/hopper/bin/Hopper"
+          }
+        },
+        "hindsight_eng": {
+          "url": "http://127.0.0.1:8888/mcp/eng/"
+        }
+      },
+      "_config_version": 53,
+      "compression": {
+        "enabled": true,
+        "threshold": 0.75
+      },
+      "telemetry": {
+        "shared_metrics": {
+          "enabled": false,
+          "send": false,
+          "offer_version": 2
+        }
+      }
+    },
+    "after": {
+      "model": {
+        "default": "ready-gyro-l-abl",
+        "provider": "custom:codebreaker",
+        "openai_runtime": "auto",
+        "base_url": "http://127.0.0.1:8080/v1",
+        "api_mode": "chat_completions",
+        "context_length": 65536
+      },
+      "providers": {
+        "openai-compatible": {
+          "name": "q35-gpu0",
+          "base_url": "http://127.0.0.1:8080/v1",
+          "model": "q35-gpu0",
+          "context_length": 65536,
+          "api_mode": "chat_completions",
+          "enabled": false
+        },
+        "custom": {
+          "name": "q35-gpu0",
+          "base_url": "http://127.0.0.1:8080/v1",
+          "model": "q35-gpu0",
+          "context_length": 65536,
+          "api_mode": "chat_completions",
+          "enabled": false
+        },
+        "codebreaker": {
+          "name": "CodeBreaker (Gyro-L)",
+          "base_url": "http://127.0.0.1:8080/v1",
+          "default_model": "ready-gyro-l-abl",
+          "model": "ready-gyro-l-abl",
+          "context_length": 65536,
+          "api_mode": "chat_completions",
+          "discover_models": false,
+          "models": {
+            "ready-gyro-l-abl": {
+              "context_length": 65536
+            }
+          },
+          "models_discovered": true
+        }
+      },
+      "mcp_servers": {
+        "rea": {
+          "command": "/home/joe/.nvm/versions/node/v24.22.2/bin/node",
+          "args": [
+            "/home/joe/.nvm/versions/node/v24.22.2/lib/node_modules/rea-agents/scripts/rea.mjs",
+            "mcp"
+          ],
+          "tools": {
+            "include": [
+              "inspect_with_objdump"
+            ]
+          }
+        }
+      },
+      "_config_version": 53,
+      "compression": {
+        "enabled": true,
+        "threshold": 0.75
+      },
+      "telemetry": {
+        "shared_metrics": {
+          "enabled": false,
+          "send": false,
+          "offer_version": 2
+        }
+      },
+      "fallback_model": [],
+      "platform_toolsets": {
+        "cli": [
+          "terminal",
+          "file",
+          "mcp-rea"
+        ]
+      },
+      "agent": {
+        "api_max_retries": 1,
+        "auto_recovery_cycles": 0,
+        "max_turns": 24
+      },
+      "terminal": {
+        "backend": "local",
+        "cwd": "/home/joe/.local/state/codex/dual-worker-20261114/worker-2",
+        "timeout": 60
+      },
+      "kanban": {
+        "dispatch_in_gateway": false,
+        "dispatch_profiles": []
+      },
+      "auxiliary": {
+        "compression": {
+          "provider": "custom:codebreaker",
+          "model": "ready-gyro-l-abl"
+        }
+      }
+    }
+  }
+}

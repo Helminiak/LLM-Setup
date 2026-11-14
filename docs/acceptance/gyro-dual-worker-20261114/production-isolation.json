@@ -1,0 +1,29 @@
+{
+  "task": "t_d0e61935",
+  "status": "triage",
+  "entire_show_json_unchanged": true,
+  "runs_json_unchanged": true,
+  "runs": [
+    {
+      "id": 27,
+      "status": "blocked",
+      "outcome": "blocked"
+    },
+    {
+      "id": 28,
+      "status": "review",
+      "outcome": "review_requested"
+    },
+    {
+      "id": 29,
+      "status": "review",
+      "outcome": "review_requested"
+    },
+    {
+      "id": 30,
+      "status": "blocked",
+      "outcome": "blocked"
+    }
+  ],
+  "gateway_dispatch_disabled_log": "2026-11-14 16:10:41,240 INFO gateway.run: kanban dispatcher: disabled via config kanban.dispatch_in_gateway=false"
+}
