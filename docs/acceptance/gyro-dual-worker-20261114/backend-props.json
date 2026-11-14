@@ -1,0 +1,35 @@
+{
+  "before": {
+    "total_slots": 1,
+    "model_alias": "gyro-l-abliterated-tq3_0-mtp",
+    "model_path": "/home/joe/models/gyro-l/Qwen3.8-Flash-Next-Gyro-L-abliterated-TQ3_0.gguf",
+    "model_ftype": "IQ4_NL - 4.5 bpw",
+    "build_info": "b11378-060e10051"
+  },
+  "after": {
+    "total_slots": 2,
+    "model_alias": "gyro-l-abliterated-tq3_0-mtp",
+    "model_path": "/home/joe/models/gyro-l/Qwen3.8-Flash-Next-Gyro-L-abliterated-TQ3_0.gguf",
+    "model_ftype": "IQ4_NL - 4.5 bpw",
+    "build_info": "b11378-060e10051"
+  },
+  "before_slots": [
+    {
+      "id": 0,
+      "n_ctx": 131072,
+      "speculative": true
+    }
+  ],
+  "after_slots": [
+    {
+      "id": 0,
+      "n_ctx": 65536,
+      "speculative": true
+    },
+    {
+      "id": 1,
+      "n_ctx": 65536,
+      "speculative": true
+    }
+  ]
+}

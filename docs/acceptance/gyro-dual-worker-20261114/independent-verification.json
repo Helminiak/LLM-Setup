@@ -1,0 +1,115 @@
+[
+  {
+    "worker": 1,
+    "command": [
+      "cargo",
+      "fmt",
+      "--check"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "time": 1794692612.241008
+  },
+  {
+    "worker": 1,
+    "command": [
+      "cargo",
+      "test",
+      "--offline"
+    ],
+    "exit": 0,
+    "stdout": "\nrunning 9 tests\ntest tests::containment_returns_inner_length ... ok\ntest tests::disjoint_intervals_have_zero_overlap ... ok\ntest tests::full_range_overlap_length_unrepresentable_returns_none ... ok\ntest tests::min_boundary_single_element_overlap ... ok\ntest tests::identical_intervals_count_whole_span ... ok\ntest tests::negative_lo_malformed_returns_none ... ok\ntest tests::partial_overlap_counts_inclusive_end ... ok\ntest tests::single_point_touch_counts_one ... ok\ntest tests::wide_negative_span_is_exact ... ok\n\ntest result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest src/lib.rs - overlap_len (line 14) ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s\n\n",
+    "stderr": "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (target/debug/deps/gyro_acceptance_one-1aca840d89366207)\n   Doc-tests gyro_acceptance_one\n",
+    "time": 1794692612.380474
+  },
+  {
+    "worker": 1,
+    "hashes": {
+      "CHECKPOINT.md": "b87672d6f5afa0da2638bcc99be11ae48a592669e29b79e122e7eb068af1f009",
+      "REPORT.md": "e85c652cada8ceede73b3bf7b3317163b9e9b943f408f92db118a2fa54966c7b",
+      "Cargo.lock": "bbeb35ae4d5905a686d68999462bbac09f38cbb5bef25400132cdbaddd71e9f4",
+      ".gitignore": "44c92e3a70ad3307b7056871c2bdb096d8bfa9373f5bf06a79bb6324a20ff2fb",
+      "Cargo.toml": "4a4257d5dbf77a0171cfd6b60be673a010011a7aa8982e17ffe664d930369801",
+      "CONTEXT_RECOVERY.md": "18ff7cbfce3bc9181bb45d5178a755323ea6378606882d44766e5c7e3a396543",
+      "src/lib.rs": "7e0b804cf4a04f4715995dfdba249b8eeeeaca4e2def4e529ddc7aa9c9491de6",
+      "evidence/09_fmt_r2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "evidence/11_test_after_boundary_fix.log": "5b3fe71eced7eab6736f3de4e76e3f7630daefa942a01f3475352fc8844ebee8",
+      "evidence/05_sha256_final.log": "de5a789cbe38a2342e5c90054f7a31775d9a7767353962230127002f2eb624ee",
+      "evidence/10_fmt_check_r2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "evidence/08_test_boundary_before_fix.log": "dfab977fcf7581ae3bba1815022de1ac60559cbe442884f6017ea98a796d8a61",
+      "evidence/00_environment.log": "aacad11a80f41f06abf0bdb20f8d8371c87280482ca454a987ed3749e7a7077c",
+      "evidence/07_git_status_final.log": "36e8c2562aca4261ece05ad73fe1ee6cb9ec70ca6573152243fd476574fa90e5",
+      "evidence/12_sha256_final_r2.log": "56d247df497e0d5a210fbbb50fdbceffa5e20a5f3cc1242f813dfdac45d74714",
+      "evidence/04_test_after_fix.log": "9c8b5be8dcb5708529420fbfa7d9da7d34ae3370dd30bc18204cb0ef0427646b",
+      "evidence/02_fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "evidence/06_git_commit.log": "1972c388a598d7aba9eecee66b0a730b90b428c8f1f72c8e1137f51a9c72d14f",
+      "evidence/03_fmt_check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "evidence/01_test_before_fix.log": "c9e490a8ead9a1e46e54a0f6dae6274562d87f93bbf104d2de66f4342a93cc93"
+    }
+  },
+  {
+    "worker": 2,
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "-v"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "test_bad_pair_raises (test_intervals.MergeIntervalsTest.test_bad_pair_raises) ... ok\ntest_disjoint_intervals_stay_separate (test_intervals.MergeIntervalsTest.test_disjoint_intervals_stay_separate) ... ok\ntest_duplicates_collapse (test_intervals.MergeIntervalsTest.test_duplicates_collapse) ... ok\ntest_empty_input (test_intervals.MergeIntervalsTest.test_empty_input) ... ok\ntest_empty_interval_dropped (test_intervals.MergeIntervalsTest.test_empty_interval_dropped) ... ok\ntest_negative_intervals (test_intervals.MergeIntervalsTest.test_negative_intervals) ... ok\ntest_nested_intervals_collapse (test_intervals.MergeIntervalsTest.test_nested_intervals_collapse) ... ok\ntest_touching_intervals_merge (test_intervals.MergeIntervalsTest.test_touching_intervals_merge) ... ok\ntest_unsorted_overlapping_chain (test_intervals.MergeIntervalsTest.test_unsorted_overlapping_chain) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.000s\n\nOK\n",
+    "time": 1794692612.4182835
+  },
+  {
+    "worker": 2,
+    "command": [
+      "git",
+      "rev-parse",
+      "--show-toplevel"
+    ],
+    "exit": 0,
+    "stdout": "/home/joe/.local/state/codex/dual-worker-20261114/worker-2\n",
+    "stderr": "",
+    "time": 1794692612.4195485
+  },
+  {
+    "worker": 2,
+    "command": [
+      "git",
+      "log",
+      "-1",
+      "--oneline"
+    ],
+    "exit": 0,
+    "stdout": "03380ae Isolation followup: unittest rerun + hash verification + ISOLATION.md\n",
+    "stderr": "",
+    "time": 1794692612.4252903
+  },
+  {
+    "worker": 2,
+    "hashes": {
+      "CHECKPOINT.md": "858f0607e84a358982b2690626cb9028fa0323e1a48ab147622d632ec4bc4f9e",
+      "REPORT.md": "e9cd6c1f5b98c55b49896257a2781d6365a19c32e30928d27a5ca893402cfe94",
+      "test_intervals.py": "d15d25492597fd6bdfbcf941ff70bcfac786bca8ba311260739b9db78a7d494b",
+      "probe.c": "869a0f919e1cdd22e3798c918f6ae955bc782cd5b690299942d2f07e0afcb24d",
+      "probe.o": "c94ed0f2b09e0167b3144775dce3c7c8e210c70f9c16db56b04b4e8d7f97450e",
+      "intervals.py": "a8ef2b86903ccd13a93f3eeb5c87f04ec4c5a039dd68f64a2bd592324526578c",
+      "ISOLATION.md": "65ac1e3ca7b7a6809e2b73b4bf735a25b25c27426c488a9b1bfbdff31e99f204",
+      "evidence/unittest.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "evidence/sha256sums-report.txt": "217169ba41ea075699b458c2e584742667466d0c435d64ec78c675128741701a",
+      "evidence/sha256sums.txt": "0bfe183a891f98ce0dcba2b9a35296004b830ae22a35365d2301763c1c957b50",
+      "evidence/isolation-unittest.exit": "019bb6c3a3b8a098ac31b682f035640a713c78f6d242144c60ceed3f5c237a89",
+      "evidence/gcc.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "evidence/git-metadata-precommit.txt": "c5fb9f4075c55fbe79fc1bc7d2611990a2e354fec192106984255f1d35ba02ba",
+      "evidence/isolation-sha256sums.txt": "b703199b64e82eec684fa8028c8ad706bd863475f1eb9ab40f0408376c6a9f98",
+      "evidence/gcc.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "evidence/isolation-unittest.stderr": "95371169b29af676972d2a291cc5825cf0edbd0d85fd8594dc1249ffacfcbe34",
+      "evidence/git-metadata-postcommit.txt": "59bdc0dce35b4a87b91a88d3167f601dba8b002493fb89a558c585ce533f7f3f",
+      "evidence/unittest.stderr": "95371169b29af676972d2a291cc5825cf0edbd0d85fd8594dc1249ffacfcbe34",
+      "evidence/isolation-unittest.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "evidence/unittest.exit": "1f46ade6d6e00c29e47e1fb4bf52449431c479e06eb95b77d24f6e1e438abe0f",
+      "evidence/gcc.exit": "989bfc012bb19182d1b67d98b116ff9ccec57e4322fbbdc1858d91d7e441ce27"
+    }
+  }
+]

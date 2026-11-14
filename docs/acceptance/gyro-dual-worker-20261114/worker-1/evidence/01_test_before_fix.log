@@ -1,0 +1,62 @@
+   Compiling gyro_acceptance_one v0.1.0 (/home/joe/.local/state/codex/dual-worker-20261114/worker-1)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.64s
+     Running unittests src/lib.rs (target/debug/deps/gyro_acceptance_one-1aca840d89366207)
+
+running 7 tests
+test tests::disjoint_intervals_have_zero_overlap ... ok
+test tests::containment_returns_inner_length ... FAILED
+test tests::negative_lo_malformed_returns_none ... ok
+test tests::identical_intervals_count_whole_span ... FAILED
+test tests::single_point_touch_counts_one ... FAILED
+test tests::partial_overlap_counts_inclusive_end ... FAILED
+test tests::wide_negative_span_is_exact ... FAILED
+
+failures:
+
+---- tests::containment_returns_inner_length stdout ----
+
+thread 'tests::containment_returns_inner_length' (2795503) panicked at src/lib.rs:58:9:
+assertion `left == right` failed
+  left: Some(2)
+ right: Some(3)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- tests::identical_intervals_count_whole_span stdout ----
+
+thread 'tests::identical_intervals_count_whole_span' (2795505) panicked at src/lib.rs:53:9:
+assertion `left == right` failed
+  left: Some(6)
+ right: Some(7)
+
+---- tests::single_point_touch_counts_one stdout ----
+
+thread 'tests::single_point_touch_counts_one' (2795508) panicked at src/lib.rs:48:9:
+assertion `left == right` failed
+  left: Some(0)
+ right: Some(1)
+
+---- tests::partial_overlap_counts_inclusive_end stdout ----
+
+thread 'tests::partial_overlap_counts_inclusive_end' (2795507) panicked at src/lib.rs:38:9:
+assertion `left == right` failed
+  left: Some(4)
+ right: Some(5)
+
+---- tests::wide_negative_span_is_exact stdout ----
+
+thread 'tests::wide_negative_span_is_exact' (2795509) panicked at src/lib.rs:71:9:
+assertion `left == right` failed
+  left: Some(5)
+ right: Some(6)
+
+
+failures:
+    tests::containment_returns_inner_length
+    tests::identical_intervals_count_whole_span
+    tests::partial_overlap_counts_inclusive_end
+    tests::single_point_touch_counts_one
+    tests::wide_negative_span_is_exact
+
+test result: FAILED. 2 passed; 5 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--lib`

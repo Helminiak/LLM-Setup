@@ -1,0 +1,110 @@
+{
+  "dual_active_samples": 335,
+  "first_dual_active": 1794692342.2702284,
+  "last_dual_active": 1794692572.3995318,
+  "sample_interval_seconds": 0.25,
+  "free_mib": {
+    "0": {
+      "min": 1962,
+      "max": 1982
+    },
+    "1": {
+      "min": 2106,
+      "max": 2138
+    }
+  },
+  "fault_requests": [
+    {
+      "fault_time": 1794692496.903281,
+      "status": 503,
+      "slot_observation": {
+        "time": 1794692496.7995412,
+        "slots": [
+          {
+            "id": 0,
+            "n_ctx": 65536,
+            "is_processing": false,
+            "id_task": 3337,
+            "n_prompt_tokens": 563
+          },
+          {
+            "id": 1,
+            "n_ctx": 65536,
+            "is_processing": true,
+            "id_task": 3949,
+            "n_prompt_tokens": 15122
+          }
+        ]
+      }
+    },
+    {
+      "fault_time": 1794692496.9530528,
+      "status": 503,
+      "slot_observation": {
+        "time": 1794692497.0510218,
+        "slots": [
+          {
+            "id": 0,
+            "n_ctx": 65536,
+            "is_processing": false,
+            "id_task": 3337,
+            "n_prompt_tokens": 563
+          },
+          {
+            "id": 1,
+            "n_ctx": 65536,
+            "is_processing": true,
+            "id_task": 3949,
+            "n_prompt_tokens": 15153
+          }
+        ]
+      }
+    },
+    {
+      "fault_time": 1794692576.7381563,
+      "status": 503,
+      "slot_observation": {
+        "time": 1794692576.7688956,
+        "slots": [
+          {
+            "id": 0,
+            "n_ctx": 65536,
+            "is_processing": true,
+            "id_task": 6326,
+            "n_prompt_tokens": 11654
+          },
+          {
+            "id": 1,
+            "n_ctx": 65536,
+            "is_processing": false,
+            "id_task": 6179,
+            "n_prompt_tokens": 339
+          }
+        ]
+      }
+    },
+    {
+      "fault_time": 1794692576.765201,
+      "status": 503,
+      "slot_observation": {
+        "time": 1794692576.7688956,
+        "slots": [
+          {
+            "id": 0,
+            "n_ctx": 65536,
+            "is_processing": true,
+            "id_task": 6326,
+            "n_prompt_tokens": 11654
+          },
+          {
+            "id": 1,
+            "n_ctx": 65536,
+            "is_processing": false,
+            "id_task": 6179,
+            "n_prompt_tokens": 339
+          }
+        ]
+      }
+    }
+  ]
+}

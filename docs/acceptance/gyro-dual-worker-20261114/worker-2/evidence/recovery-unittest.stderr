@@ -1,0 +1,14 @@
+test_bad_pair_raises (test_intervals.MergeIntervalsTest.test_bad_pair_raises) ... ok
+test_disjoint_intervals_stay_separate (test_intervals.MergeIntervalsTest.test_disjoint_intervals_stay_separate) ... ok
+test_duplicates_collapse (test_intervals.MergeIntervalsTest.test_duplicates_collapse) ... ok
+test_empty_input (test_intervals.MergeIntervalsTest.test_empty_input) ... ok
+test_empty_interval_dropped (test_intervals.MergeIntervalsTest.test_empty_interval_dropped) ... ok
+test_negative_intervals (test_intervals.MergeIntervalsTest.test_negative_intervals) ... ok
+test_nested_intervals_collapse (test_intervals.MergeIntervalsTest.test_nested_intervals_collapse) ... ok
+test_touching_intervals_merge (test_intervals.MergeIntervalsTest.test_touching_intervals_merge) ... ok
+test_unsorted_overlapping_chain (test_intervals.MergeIntervalsTest.test_unsorted_overlapping_chain) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.000s
+
+OK

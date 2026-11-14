@@ -1,0 +1,13 @@
+❯ Isolated outage test: reply OK. If the endpoint is unavailable report BLOCKED, never switch provider.
+⚠️  Attempt 1/1 failed: HTTP 503: Isolated acceptance fault: backend unavailable
+❌ API failed after 1 retries — HTTP 503: Isolated acceptance fault: backend unavailable
+   💀 Final error: HTTP 503: Isolated acceptance fault: backend unavailable
+custom reported it was overloaded on all 1 attempts — it looks temporarily unavailable. Wait a minute and send /retry, or switch models with /model. To avoid this in future, add a backup provider with hermes fallback add.
+Provider said: HTTP 503: Isolated acceptance fault: backend unavailable
+⚠ Iteration budget reached (1/1) — response may be incomplete
+⚠️  Attempt 1/1 failed: HTTP 503: Isolated acceptance fault: backend unavailable
+❌ API failed after 1 retries — HTTP 503: Isolated acceptance fault: backend unavailable
+   💀 Final error: HTTP 503: Isolated acceptance fault: backend unavailable
+custom reported it was overloaded on all 1 attempts — it looks temporarily unavailable. Wait a minute and send /retry, or switch models with /model. To avoid this in future, add a backup provider with hermes fallback add.
+Provider said: HTTP 503: Isolated acceptance fault: backend unavailable
+⚠ Iteration budget reached (1/1) — response may be incomplete

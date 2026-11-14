@@ -1,0 +1,7 @@
+│ +Context: worker-1 test session concurrently receives an isolated HTTP 503
+│ +Isolation conclusion: the concurrent worker-1 HTTP 503 had zero observable
+Conclusion: worker-1's isolated HTTP 503 had zero observable effect on worker-2 — green rerun, unchanged hashes, clean repo. Failure budget 0/2 used, no blockers, no production/config changes. Final check 2026-11-14T21:41:08Z. Available for followup.
+❯ Cancellation acceptance: Use terminal to run python3 -u -c "import time; print(\"CANCEL_READY\", flush=True); time.sleep(30); print(\"CANCEL_FINISHED\", flush=True)". This harmless command will be interrupted by supervisor. Do not write files or make commits in this turn. No other actions.
+), the output should display CANCEL_FINISHED. The instructions say it "will be interrupted
+ by timeout, I should see the partial output "CANCEL_READY". Anyway, let's just run
+✗ $ python3 -u -c "import time; print(\"CANCEL_READY\", flush=True); time.sleep(30); print(\"CANCEL_FINISHED\", flush=True)"  13.5s [exit 130]
