@@ -1,0 +1,1 @@
+candidateB-spec3: runs=9 correct=9/9 decode_tps_mean=31.66 swap_in=368 swap_out=910

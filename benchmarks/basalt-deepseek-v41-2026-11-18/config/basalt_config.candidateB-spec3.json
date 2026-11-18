@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "models": [
+    {
+      "model": "/home/joe/models/basalt/models/DeepSeek-V4.1-Flash-1017-UD-IQ1_M.basalt",
+      "alias": "basalt-deepseek-v41",
+      "parallel": 1
+    }
+  ],
+  "engine": {
+    "gpu": "0,1",
+    "max-context": 131072,
+    "kv": "fp8",
+    "ram-reserve-mib": 8192,
+    "expert-cache": "auto",
+    "spec": 3
+  },
+  "server": {
+    "host": "127.0.0.1"
+  }
+}
