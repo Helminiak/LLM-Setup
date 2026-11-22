@@ -1,0 +1,1 @@
+{"model":"Tiel-Coder-35B-A3B-MTP-UD-Q8_K_XL.gguf","mmproj":"mmproj-BF16.gguf","ctx_size":131072,"cache_k":"q8_0","cache_v":"q8_0","gpu":"CUDA0,CUDA1","tensor_split":"1,1","flash_attn":true,"mtp":"--spec-type draft-mtp --spec-draft-n-max 3","status":"tested only; not registered"}

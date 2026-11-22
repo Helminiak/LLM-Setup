@@ -1,0 +1,10 @@
+{
+  "date": "2026-11-22",
+  "status": "COMPLETED_NO_QUALIFIER",
+  "runtime": {"llama_cpp": "/home/joe/src/llama-gyro-main/build/bin/llama-server", "llama_swap": "v272 (802f1c4)"},
+  "models": [
+    {"id":"tiel-coder-q8-mtp","repository":"peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF-MTP","revision":"bb5f3f441849fc24c2d9037c310bc995404bfa0","file":"Tiel-Coder-35B-A3B-MTP-UD-Q8_K_XL.gguf","size":38840606560,"sha256":"bc3006e14a0b44837beb4577afce13c7016de1e2d163b0bfdb181f93e981e34f","projector":"mmproj-BF16.gguf","projector_size":902822016,"projector_sha256":"d9ce31026d1cb1f3f8d5152e2e2a014d9d2b302b6c93a7dc07bb0a0487f52837","hf_file_commits":{"weights":"c39382017833d20eb1f2c2d75ca79256ee9f068e","projector":"7fec847b7268910b0a7c0137b893256d360c6ec2"},"metadata":"loaded; Qwen-VL multimodal; qwen3.8-froggeric-v22.5.0 template; embedded MTP/nextn tensors recognized"},
+    {"id":"qwen-turbo-27b-q8-mtp","repository":"DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF","revision":"36116c48f4e81b4c66a9c63da13a72959999a5f6","file":"Qwen3.8-27B-TurboFCFusion-735-882-Here-Uncen-NEO-CODER-MAX-MTP-Q8_0.gguf","size":30239020576,"sha256":"54f27515edb20675f289f99b9c6d40d114fb634db21bae3fd4c901661aba85b9","projector":"mmproj-BF16.gguf","projector_size":931145920,"projector_sha256":"b0d8d89e9c9c90e0fb8ca74742d9d9bd7cc0f966a29b6f8c14227000ea6bd89e","hf_file_commits":{"weights":"bddf986b12012f60d85ae1b75b50a28342f06266","projector":"59d663adf4f61a7a7c0137b893256d360c6ec2"},"metadata":"loaded; Qwen-VL multimodal; matching projector downloaded only because absent locally; Protect AI feed flags PAIT-GGUF-100"}
+  ],
+  "hash_semantics": "SHA-256 values are exact local-vs-Hugging-Face LFS OID matches; repository revisions and file commits are recorded separately."
+}

@@ -1,0 +1,1 @@
+{"model":"Qwen3.8-27B-TurboFCFusion-735-882-Here-Uncen-NEO-CODER-MAX-MTP-Q8_0.gguf","mmproj":"matching repository mmproj-BF16.gguf","ctx_size":131072,"cache_k":"q8_0","cache_v":"q8_0","gpu":"CUDA0,CUDA1","tensor_split":"1,1","flash_attn":true,"mtp":"embedded tensors available; not enabled for correctness gate","status":"tested only; not registered"}

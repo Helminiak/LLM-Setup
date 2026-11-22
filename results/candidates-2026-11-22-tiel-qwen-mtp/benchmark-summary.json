@@ -1,0 +1,9 @@
+{
+  "qualification_metric":"fully passed tasks / attempted tasks; one attempt per task",
+  "tasks":"P7 suite-v1 unchanged prompts and repository oracle/sandbox; 01,02,03,04,05,07,09,10",
+  "excluded":"08 documented unresolved oracle/spec defect; 06 excluded because README documents its NaN fixture as non-JSON-serialisable",
+  "generation":{"temperature":0,"top_p":1,"reasoning_effort":"none","max_tokens":2048,"seed":42,"context":131072},
+  "results":[{"model":"qwen3.8-27b-q6-number3","passed":6,"attempted":8,"score":0.75,"rank":1},{"model":"qwen-turbo-27b-q8-mtp","passed":5,"attempted":8,"score":0.625,"rank":2},{"model":"tiel-coder-q8-mtp","passed":4,"attempted":8,"score":0.5,"rank":3}],
+  "decision":"Neither candidate beat the current number-three coding contender; no optimization and no llama-swap integration authorized by the qualification gate.",
+  "task_breakdown":{"tiel-coder-q8-mtp":["01 PASS","02 FAIL","03 FAIL","04 PASS","05 FAIL","07 PASS","09 FAIL","10 PASS"],"qwen-turbo-27b-q8-mtp":["01 PASS","02 FAIL","03 PASS","04 PASS","05 FAIL","07 PASS","09 FAIL","10 PASS"],"qwen3.8-27b-q6-number3":["01 FAIL","02 PASS","03 PASS","04 PASS","05 PASS","07 PASS","09 FAIL","10 PASS"]}
+}
